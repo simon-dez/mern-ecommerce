@@ -1,34 +1,34 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import mongoose, { connect } from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+import connectDB from './config/db.js';
+
 
 dotenv.config();
 
 const app = express();
-
+const PORT = 5000;
 dotenv.config();
 
+// Middleware
 app.use(express.json());
 app.use(cors());
-app.use(express.json());
 
+// Routes
 
+app.use('/api/auth',authRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 
+// Database connection
+connectDB();
 
-
-
-
-
-
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB connection error:', err));
-
-  
-
-
-const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
-}   );
+});
+
+
