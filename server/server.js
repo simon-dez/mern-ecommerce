@@ -6,12 +6,12 @@ import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import connectDB from './config/db.js';
-
+import chalk from 'chalk';
 
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = 3000;
 dotenv.config();
 
 // Middleware
@@ -28,7 +28,7 @@ app.use('/api/orders', orderRoutes);
 connectDB();
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(chalk.bold.bgYellow(`Server listening on port ${PORT}`));
 });
 
 
