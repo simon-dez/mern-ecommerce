@@ -1,6 +1,9 @@
-const Footer = () => {
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+
+
+function Footer  ()  {
   return (
-    <footer className="bg-gray-800 text-white py-4">
+    <footer className="bg-gray-800 text-blue-200 py-4">
       <div className="container mx-auto text-center">
         <div className="mb-4">
           <a href="/" className="mx-2 hover:underline">Home</a>
