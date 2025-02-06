@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/f
 
 function Footer  ()  {
   return (
-    <footer className="bg-gray-800 text-blue-200 py-4">
+    <footer className="bg-[#C5C7CA] text-[#181A1B] py-4">
       <div className="container mx-auto text-center">
         <div className="mb-4">
           <a href="/" className="mx-2 hover:underline">Home</a>

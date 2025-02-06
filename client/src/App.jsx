@@ -5,10 +5,7 @@ import Footer from './components/shopping-view/Footer'
 function App() {
   return (
     <div>
-     
-
-    <Footer />
-    
+     <Footer />
     </div>
   )
 }
