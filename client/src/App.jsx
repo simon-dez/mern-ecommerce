@@ -1,9 +1,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Footer from './components/shopping-view/Footer';
 import Navbar from './components/shopping-view/Navbar';
 import ProductOverview from './pages/shopping-view/ProductOverview';
 import ProductDetail from './pages/shopping-view/ProductDetail';
+import Cart from './pages/shopping-view/Cart';
 import Dashboard from './pages/admin-view/dashboard';
 import AdminProducts from './pages/admin-view/products';
 import AdminOrders from './pages/admin-view/orders';
@@ -16,30 +18,33 @@ import PageNotFound from './pages/not-found/PageNotFound';
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        {/* Admin Routes */}
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/products" element={<AdminProducts />} />
-        <Route path="/admin/orders" element={<AdminOrders />} />
+    <CartProvider>
+      <div>
+        <Navbar />
+        <Routes>
+          {/* Admin Routes */}
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
 
-        {/* Auth Routes */}
-        <Route path="/login" element={<AuthLogin />} />
-        <Route path="/register" element={<AuthRegister />} />
+          {/* Auth Routes */}
+          <Route path="/login" element={<AuthLogin />} />
+          <Route path="/register" element={<AuthRegister />} />
 
-        {/* Shopping Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/products" element={<ProductOverview />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+          {/* Shopping Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/products" element={<ProductOverview />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
 
-        {/* 404 Route */}
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-      <Footer />
-    </div>
+          {/* 404 Route */}
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        <Footer />
+      </div>
+    </CartProvider>
   );
 }
 
