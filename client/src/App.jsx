@@ -13,13 +13,13 @@ import AuthRegister from "./pages/auth/register";
 import Home from "./pages/shopping-view/home";
 import Account from "./pages/shopping-view/account";
 import Checkout from "./pages/shopping-view/checkout";
-import PageNotFound from "./pages/not-found/PageNotFound"; 
+import PageNotFound from "./pages/not-found/PageNotFound";
+import Cart from "./pages/shopping-view/Cart";
 
 function App() {
   return (
     <div>
-
-      <NavBar />
+      <Navbar />
       <div className="mt-16">
         <Routes>
           {/* Admin Routes */}
