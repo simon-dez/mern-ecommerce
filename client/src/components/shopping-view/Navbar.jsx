@@ -37,6 +37,7 @@ function Navbar() {
   ];
 
   return (
+
     <header className="bg-white shadow-sm fixed w-full top-0 z-50">
       <nav className="max-w-[1920px] mx-auto px-4">
         <div className="flex items-center h-16 relative">
@@ -136,6 +137,7 @@ function Navbar() {
         )}
       </nav>
     </header>
+
   );
 }
 
