@@ -1,0 +1,66 @@
+.hero-section {
+  width: 100%;
+  min-height: 100vh;  
+  overflow: hidden;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section img,
+.hero-section video {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.hero-video {
+  width: 100%;
+  height: auto;
+}
+
+.item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 150px;  
+}
+
+.accessories-image {
+  width: 480px;
+  height: auto;
+}
+
+.women-image {
+  width: 480px;
+  height: auto;
+}
+html, body {
+  overflow-y: auto;
+}
+  
+ 
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 20px;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: auto;
+  }
+
+  .item-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .accessories-image {
+    width: 100%;
+    height: auto;
+  }
+}
