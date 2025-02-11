@@ -1,8 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { CartProvider } from './context/CartContext';
 import Footer from './components/shopping-view/Footer';
-import Navbar from './components/shopping-view/Navbar';
+import NavBar from './components/shopping-view/Navbar';
 import ProductOverview from './pages/shopping-view/ProductOverview';
 import ProductDetail from './pages/shopping-view/ProductDetail';
 import Cart from './pages/shopping-view/Cart';
@@ -18,9 +17,9 @@ import PageNotFound from './pages/not-found/PageNotFound';
 
 function App() {
   return (
-    <CartProvider>
-      <div>
-        <Navbar />
+    <div>
+      <NavBar />
+      <div className="mt-16">
         <Routes>
           {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<Dashboard />} />
@@ -38,13 +37,15 @@ function App() {
           <Route path="/products" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/category/:category" element={<ProductOverview />} />
+          <Route path="/category/:category/:subcategory" element={<ProductOverview />} />
 
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer />
       </div>
-    </CartProvider>
+      <Footer />
+    </div>
   );
 }
 

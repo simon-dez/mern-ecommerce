@@ -61,7 +61,7 @@ function ProductDetail() {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-white">
+    <div className="container mx-auto px-4 py-8 bg-white mt-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Image Section */}
         <div className="md:w-3/5">
@@ -102,7 +102,7 @@ function ProductDetail() {
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                 </svg>
               </div>
             </div>
@@ -113,11 +113,10 @@ function ProductDetail() {
           <button
             onClick={handleAddToCart}
             disabled={!selectedSize}
-            className={`w-full py-2 px-4 rounded ${
-              !selectedSize
+            className={`w-full py-2 px-4 rounded ${!selectedSize
                 ? 'bg-gray-300 cursor-not-allowed'
                 : 'bg-black text-white hover:bg-gray-800'
-            }`}
+              }`}
           >
             {!selectedSize ? 'SELECT SIZE' : 'ADD TO CART'}
           </button>

@@ -1,22 +1,22 @@
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebook, FaXTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 
 
 function Footer  ()  {
   return (
-    <footer className="bg-[#C5C7CA] text-[#181A1B] py-4">
+    <footer className=" text-gray-900 py-4">
       <div className="container mx-auto text-center">
-        <div className="mb-4">
-          <a href="/" className="mx-2 hover:underline">Home</a>
-          <a href="/about" className="mx-2 hover:underline">About</a>
-          <a href="/contact" className="mx-2 hover:underline">Contact</a>
-          <a href="/privacy" className="mx-2 hover:underline">Privacy Policy</a>
+        <div className="mb-8">
+          <a href="/" className="mx-4 hover:text-gray-600">Home</a>
+          <a href="/about" className="mx-4 hover:text-gray-600">About</a>
+          <a href="/contact" className="mx-4 hover:text-gray-600">Contact</a>
+          <a href="/privacy" className="mx-4 hover:text-gray-600">Privacy Policy</a>
         </div>
         <div className="mb-4 flex justify-center">
           <a href="https://facebook.com" className="mx-2" aria-label="Facebook">
-            <FaFacebookF />
+            <FaFacebook />
           </a>
           <a href="https://twitter.com" className="mx-2" aria-label="Twitter">
-            <FaTwitter />
+            <FaXTwitter />
           </a>
           <a href="https://instagram.com" className="mx-2" aria-label="Instagram">
             <FaInstagram />
@@ -25,7 +25,6 @@ function Footer  ()  {
             <FaLinkedinIn />
           </a>
         </div>
-        <p>&copy; 2023 Your Company. All rights reserved.</p>
       </div>
     </footer>
   );
