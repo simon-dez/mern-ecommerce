@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'; 
+import Background from '../../components/shopping-view/Background';
 
 function Home() {
   return (
     <div>
-      <h1>Home Page</h1>
+    <Background />
       {/* Add your home page content here */}
     </div>
   );
