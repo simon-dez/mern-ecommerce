@@ -12,19 +12,11 @@ import AuthRegister from "./pages/auth/register";
 import Home from "./pages/shopping-view/home";
 import Account from "./pages/shopping-view/account";
 import Checkout from "./pages/shopping-view/checkout";
-import PageNotFound from "./pages/not-found/PageNotFound";
-import backgroundImage from "./components/shopping-view/Background.jsx";
+import PageNotFound from "./pages/not-found/PageNotFound"; 
 
 function App() {
-  const appStyle = {
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    minHeight: "100vh",
-  };
-
   return (
-    <div style={appStyle}>
+    <div>
       <Navbar />
 
       <Routes>
