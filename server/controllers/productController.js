@@ -5,8 +5,10 @@ import Product from '../models/Product.js';
 export const getProducts = async (req, res) => {
     try {
         const products = await Product.find({});
+        console.log('Fetched products from database:', products); // Detailed logging
         res.status(200).json(products);
     } catch (error) {
+        console.error('Error fetching products:', error); // Detailed logging
         res.status(500).json({ error: error.message });
     }
 };
