@@ -12,7 +12,7 @@ function ProductDetail() {
     const fetchProduct = async () => {
       try {
         // Replace with your actual API endpoint
-        const response = await axios.get(`http://localhost:3000/api/products/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/products/${id}`);
         setProduct(response.data);
       } catch (error) {
         setError('Product not found');

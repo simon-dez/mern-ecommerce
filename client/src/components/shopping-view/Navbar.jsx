@@ -7,6 +7,8 @@ function Navbar() {
       <div className="flex space-x-8">
         <Link to="/" className="text-white font-semibold">Home</Link>
         <Link to="/products" className="text-white font-semibold">Products</Link>
+        
+
       </div>
     </nav>
   );

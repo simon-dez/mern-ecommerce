@@ -1,5 +1,7 @@
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-
+import React, { useState } from "react";
+//import {AuthLogin} from "../../pages/auth/login";
+//import {AuthRegister} from "../../pages/auth/register";
 
 function Footer  ()  {
   return (
@@ -10,6 +12,7 @@ function Footer  ()  {
           <a href="/about" className="mx-2 hover:underline">About</a>
           <a href="/contact" className="mx-2 hover:underline">Contact</a>
           <a href="/privacy" className="mx-2 hover:underline">Privacy Policy</a>
+          <a href="/login" className="mx-2 hover:underline">Login</a>
         </div>
         <div className="mb-4 flex justify-center">
           <a href="https://facebook.com" className="mx-2" aria-label="Facebook">
@@ -31,4 +34,12 @@ function Footer  ()  {
   );
 };
 
+//const [currentForm, setCurrentForm] = useState("login");
+
+  //const toggleForm = (formName) => {
+ //   setCurrentForm(formName);
+  //}
+
+  //{currentForm === "login" ? <AuthLogin onFormSwitch={toggleForm} /> : <AuthRegister onFormSwitch={toggleForm}/>}
 export default Footer;
+
