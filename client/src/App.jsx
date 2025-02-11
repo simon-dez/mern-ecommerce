@@ -1,23 +1,32 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Footer from './components/shopping-view/Footer';
-import Navbar from './components/shopping-view/Navbar';
-import ProductOverview from './pages/shopping-view/ProductOverview';
-import ProductDetail from './pages/shopping-view/ProductDetail';
-import Dashboard from './pages/admin-view/dashboard';
-import AdminProducts from './pages/admin-view/products';
-import AdminOrders from './pages/admin-view/orders';
-import AuthLogin from './pages/auth/login';
-import AuthRegister from './pages/auth/register';
-import Home from './pages/shopping-view/home';
-import Account from './pages/shopping-view/account';
-import Checkout from './pages/shopping-view/checkout';
-import PageNotFound from './pages/not-found/PageNotFound';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Footer from "./components/shopping-view/Footer";
+import Navbar from "./components/shopping-view/Navbar";
+import ProductOverview from "./pages/shopping-view/ProductOverview";
+import ProductDetail from "./pages/shopping-view/ProductDetail";
+import Dashboard from "./pages/admin-view/dashboard";
+import AdminProducts from "./pages/admin-view/products";
+import AdminOrders from "./pages/admin-view/orders";
+import AuthLogin from "./pages/auth/login";
+import AuthRegister from "./pages/auth/register";
+import Home from "./pages/shopping-view/home";
+import Account from "./pages/shopping-view/account";
+import Checkout from "./pages/shopping-view/checkout";
+import PageNotFound from "./pages/not-found/PageNotFound";
+import backgroundImage from "./components/shopping-view/Background.jsx";
 
 function App() {
+  const appStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "100vh",
+  };
+
   return (
-    <div>
+    <div style={appStyle}>
       <Navbar />
+
       <Routes>
         {/* Admin Routes */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
