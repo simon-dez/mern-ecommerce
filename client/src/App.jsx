@@ -5,9 +5,9 @@ import Footer from "./components/shopping-view/Footer";
 import Navbar from "./components/shopping-view/Navbar";
 import ProductOverview from "./pages/shopping-view/ProductOverview";
 import ProductDetail from "./pages/shopping-view/ProductDetail";
-import Dashboard from "./pages/admin-view/dashboard";
-import AdminProducts from "./pages/admin-view/products";
-import AdminOrders from "./pages/admin-view/orders";
+import Dashboard from "./pages/admin-view/Dashboard";
+import AdminProducts from "./pages/admin-view/Products";
+import AdminOrders from "./pages/admin-view/Orders";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
 import Home from "./pages/shopping-view/home";
@@ -26,7 +26,7 @@ function App() {
       <div className="mt-16">
         <Routes>
           {/* Admin Routes */}
-          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
 
