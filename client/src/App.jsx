@@ -3,6 +3,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/shopping-view/Footer";
 import Navbar from "./components/shopping-view/Navbar";
+import AboutUs from "./components/shopping-view/About";
 import ProductOverview from "./pages/shopping-view/ProductOverview";
 import ProductDetail from "./pages/shopping-view/ProductDetail";
 import Dashboard from "./pages/admin-view/dashboard";
@@ -23,6 +24,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <AboutUs />
       <div className="mt-16">
         <Routes>
           {/* Admin Routes */}
