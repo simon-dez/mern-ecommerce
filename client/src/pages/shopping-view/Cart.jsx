@@ -6,6 +6,8 @@ function Cart() {
   const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
   const navigate = useNavigate();
 
+  const total = getCartTotal();
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
@@ -32,7 +34,7 @@ function Cart() {
                   />
                   <div>
                     <h2 className="text-lg font-semibold">{item.name}</h2>
-                    <p className="text-gray-600">${item.price}</p>
+                    <p className="text-gray-600">€{item.price.toFixed(2)}</p>
                     <p className="text-sm text-gray-500">Size: {item.selectedSize}</p>
                   </div>
                 </div>
@@ -64,18 +66,19 @@ function Cart() {
             ))}
           </div>
 
-          <div className="flex justify-between items-center border-t pt-4">
-            <div>
-              <p className="text-xl font-semibold">Total: ${getCartTotal().toFixed(2)}</p>
-              <p className="text-sm text-gray-500">Including VAT</p>
+          {/* Order Summary */}
+          <div className="flex flex-col space-y-2 border-t pt-4">
+            <div className="flex justify-between font-semibold">
+              <span>Total (VAT included):</span>
+              <span>€{total.toFixed(2)}</span>
             </div>
-            <button
-              onClick={() => navigate('/checkout')}
-              className="bg-black text-white px-8 py-3 rounded hover:bg-gray-800 transition-colors"
-            >
-              Proceed to Checkout
-            </button>
           </div>
+          <button
+            onClick={() => navigate('/checkout')}
+            className="bg-black text-white px-8 py-3 rounded hover:bg-gray-800 transition-colors mt-4"
+          >
+            Proceed to Checkout
+          </button>
         </div>
       )}
     </div>

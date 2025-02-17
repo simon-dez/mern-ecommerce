@@ -18,9 +18,9 @@ const Product = mongoose.model('Product', productSchema);
 const sampleProducts = [
   {
     _id: '1',
-    name: 'Sample Product',
-    price: 29.99,
-    description: 'Sample description',
+    name: 'Classic Leather Jacket',
+    price: 199.99,
+    description: 'A timeless leather jacket that never goes out of style. Perfect for any occasion.',
     imageUrl: 'https://saint-laurent.dam.kering.com/m/10e560d061126eff/eCom-813942Y2J022104_A.jpg',
     sizes: [
       { size: 'XS', countInStock: 5 },
@@ -32,9 +32,9 @@ const sampleProducts = [
   },
   {
     _id: '2',
-    name: 'Product 2',
-    price: 49.99,
-    description: 'Description for product 2',
+    name: 'Elegant Evening Dress',
+    price: 149.99,
+    description: 'An elegant evening dress that will make you stand out at any event.',
     imageUrl: 'https://saint-laurent.dam.kering.com/m/2346d8c3a140d507/Medium2-817949Y2L822630_A.jpg',
     sizes: [
       { size: 'XS', countInStock: 3 },
@@ -46,9 +46,9 @@ const sampleProducts = [
   },
   {
     _id: '3',
-    name: 'Product 3',
-    price: 19.99,
-    description: 'Description for product 3',
+    name: 'Casual Denim Jeans',
+    price: 59.99,
+    description: 'Comfortable and stylish denim jeans for everyday wear.',
     imageUrl: 'https://saint-laurent.dam.kering.com/m/4441f7a6edc7962e/Medium2-821895Y405W7557_A.jpg',
     sizes: [
       { size: 'XS', countInStock: 8 },
@@ -60,9 +60,9 @@ const sampleProducts = [
   },
   {
     _id: '4',
-    name: 'Product 4',
-    price: 39.99,
-    description: 'Description for product 4',
+    name: 'Sporty Running Shoes',
+    price: 89.99,
+    description: 'High-performance running shoes designed for comfort and durability.',
     imageUrl: 'https://saint-laurent.dam.kering.com/m/4441f7a6edc7962e/Medium2-821895Y405W7557_A.jpg',
     sizes: [
       { size: 'XS', countInStock: 4 },
@@ -74,9 +74,9 @@ const sampleProducts = [
   },
   {
     _id: '5',
-    name: 'Product 5',
-    price: 59.99,
-    description: 'Description for product 5',
+    name: 'Stylish Handbag',
+    price: 129.99,
+    description: 'A stylish handbag that complements any outfit.',
     imageUrl: 'https://saint-laurent.dam.kering.com/m/4441f7a6edc7962e/Medium2-821895Y405W7557_A.jpg',
     sizes: [
       { size: 'XS', countInStock: 2 },
@@ -88,9 +88,9 @@ const sampleProducts = [
   },
   {
     _id: '6',
-    name: 'Product 6',
-    price: 79.99,
-    description: 'Description for product 6',
+    name: 'Luxury Watch',
+    price: 299.99,
+    description: 'A luxury watch that combines elegance and functionality.',
     imageUrl: 'https://saint-laurent.dam.kering.com/m/4441f7a6edc7962e/Medium2-821895Y405W7557_A.jpg',
     sizes: [
       { size: 'XS', countInStock: 6 },

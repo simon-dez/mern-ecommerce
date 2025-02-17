@@ -18,7 +18,7 @@ import Cart from "./pages/shopping-view/Cart";
 import AboutUs from "./components/shopping-view/AboutUs";
 
 function App() {
-  
+
   return (
     <div>
       <Navbar />
