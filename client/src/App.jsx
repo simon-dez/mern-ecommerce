@@ -3,7 +3,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/shopping-view/Footer";
 import Navbar from "./components/shopping-view/Navbar";
-import AboutUs from "./components/shopping-view/About";
 import ProductOverview from "./pages/shopping-view/ProductOverview";
 import ProductDetail from "./pages/shopping-view/ProductDetail";
 import Dashboard from "./pages/admin-view/dashboard";
@@ -16,14 +15,14 @@ import Account from "./pages/shopping-view/account";
 import Checkout from "./pages/shopping-view/checkout";
 import PageNotFound from "./pages/not-found/PageNotFound";
 import Cart from "./pages/shopping-view/Cart";
-
+import AboutUs from "./components/shopping-view/AboutUs";
 
 function App() {
 
   return (
     <div>
       <Navbar />
-      <AboutUs />
+      
       <div className="mt-16">
         <Routes>
           {/* Admin Routes */}
@@ -46,7 +45,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/category/:category" element={<ProductOverview />} />
           <Route path="/category/:category/:subcategory" element={<ProductOverview />} />
-
+          <Route path="/about" element={<AboutUs />} />
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
