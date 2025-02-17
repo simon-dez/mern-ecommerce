@@ -109,9 +109,6 @@ function Navbar() {
                 {cart.length}
               </span>
             </Link>
-            <Link to="/about" className="text-gray-900 hover:text-gray-600">
-              About Us
-            </Link>
             <Link to="/login" className="text-gray-900 hover:text-gray-600">
               login
             </Link>
