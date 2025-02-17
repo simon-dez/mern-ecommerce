@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { FaBars, FaXmark, FaUser, FaCartShopping } from 'react-icons/fa6';
+import AboutUs from './AboutUs';
+
+
+
 
 function Navbar() {
   const { cart } = useCart();
@@ -104,6 +108,12 @@ function Navbar() {
                 {cart.length}
               </span>
             </Link>
+            <Link to="/about" className="text-gray-900 hover:text-gray-600">
+              About Us
+            </Link>
+
+
+
           </div>
         </div>
 
