@@ -7,16 +7,16 @@ const Sidebar = () => {
             <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
             <ul>
                 <li className="mb-3">
-                    <Link to="/dashboard" className="hover:text-gray-400">Dashboard</Link>
+                    <Link to="/admin" className="hover:text-gray-400">Dashboard</Link>
                 </li>
                 <li className="mb-3">
-                    <Link to="/products" className="hover:text-gray-400">Products</Link>
+                    <Link to="./products" className="hover:text-gray-400">Products</Link>
                 </li>
                 <li className="mb-3">
-                    <Link to="/orders" className="hover:text-gray-400">Orders</Link>
+                    <Link to="/admin/orders" className="hover:text-gray-400">Orders</Link>
                 </li>
                 <li className="mb-3">
-                    <Link to="/users" className="hover:text-gray-400">Users</Link>
+                    <Link to="/admin/users" className="hover:text-gray-400">Users</Link>
                 </li>
             </ul>
         </div>
