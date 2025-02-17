@@ -14,15 +14,15 @@ import Home from "./pages/shopping-view/home";
 import Account from "./pages/shopping-view/account";
 import Checkout from "./pages/shopping-view/checkout";
 import PageNotFound from "./pages/not-found/PageNotFound";
-
 import Cart from "./pages/shopping-view/Cart";
-
+import AboutUs from "./components/shopping-view/AboutUs";
 
 function App() {
-  
+
   return (
     <div>
       <Navbar />
+      
       <div className="mt-16">
         <Routes>
           {/* Admin Routes */}
@@ -45,7 +45,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/category/:category" element={<ProductOverview />} />
           <Route path="/category/:category/:subcategory" element={<ProductOverview />} />
-
+          <Route path="/about" element={<AboutUs />} />
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>

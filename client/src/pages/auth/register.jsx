@@ -3,11 +3,12 @@ import React, { useState } from "react";
 //import axios from "axios";
 
 function AuthRegister() {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("newuser@demo.com");
+  const [pass, setPass] = useState("123456");
+  const [name, setName] = useState("New User");
 
   const handleSubmit = (e) => {
+
     e.preventDefault();}
     //   axios
     //    .post("", { name, email, pass })
@@ -68,7 +69,15 @@ function AuthRegister() {
           
         </div>
     );
+
+    e.preventDefault();
+    // For testing, save dummy registered user data to localStorage
+    const dummyUser = { email, name };
+    localStorage.setItem("user", JSON.stringify(dummyUser));
+    // Redirect to checkout after registration 
+    window.location.href = "/checkout";
+
   };
-
-
+}
+  
 export default AuthRegister;

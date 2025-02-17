@@ -3,11 +3,12 @@ import React, { useState } from "react";
 //import axios from "axios";
 
 function AuthLogin() {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("test@demo.com");
+  const [pass, setPass] = useState("123456");
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
+
     e.preventDefault();}
     //   axios
     //    .post("", { name, email, pass })
@@ -52,7 +53,14 @@ function AuthLogin() {
          
         </div>
     );
+
+    e.preventDefault();
+    // For testing
+    const dummyUser = { email, name: "Test User" };
+    localStorage.setItem("user", JSON.stringify(dummyUser));
+    window.location.href = "/checkout";
+
   };
 
-
+ 
 export default AuthLogin;

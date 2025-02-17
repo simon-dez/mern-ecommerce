@@ -16,6 +16,9 @@ function ProductDetail() {
     const fetchProduct = async () => {
       try {
 
+
+
+
         const response = await axios.get(`http://localhost:5000/api/products/${id}`);
         if (!response.data.sizes || !Array.isArray(response.data.sizes)) {
           console.error('Invalid sizes data:', response.data.sizes);
