@@ -1,8 +1,21 @@
-
+import pagenotfound from '../../assets/pagenotfound.jpg';
 
 function NotFound() {
   return (
-    <div>404 Not Found</div>
+   <>
+   
+   <div>
+      <img src={pagenotfound} alt="Page Not Found" className="w-full h-full" />
+      
+   </div>
+
+
+   jj
+   
+   
+   
+   
+   </>
     );
 }
 

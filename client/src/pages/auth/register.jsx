@@ -75,7 +75,8 @@ function AuthRegister() {
     //const dummyUser = { email, name };
     //localStorage.setItem("user", JSON.stringify(dummyUser));
     // Redirect to checkout after registration 
-   // window.location.href = "/checkout";
+    //
+    window.location.href = "/checkout";
 
   };
 
