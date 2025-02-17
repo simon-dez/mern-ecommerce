@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { FaBars, FaXmark, FaUser, FaCartShopping } from 'react-icons/fa6';
 import AboutUs from './AboutUs';
-
-
+import login from '../../pages/auth/login';
+import register from '../../pages/auth/register';
+import companyLogo from '../../assets/company-logo2.png';
 
 
 function Navbar() {
@@ -89,8 +90,8 @@ function Navbar() {
 
           {/* Centered Logo */}
           <div className="flex-1 flex justify-center">
-            <Link to="/" className="text-2xl font-bold text-gray-900">
-              DEDSV
+            <Link to="/" className="text-2xl font-bold text-gray-900 w-50 h-50">
+              <img src={companyLogo} alt="" />
             </Link>
           </div>
 
@@ -111,7 +112,13 @@ function Navbar() {
             <Link to="/about" className="text-gray-900 hover:text-gray-600">
               About Us
             </Link>
+            <Link to="/login" className="text-gray-900 hover:text-gray-600">
+              login
+            </Link>
 
+            <Link to="/register" className="text-gray-900 hover:text-gray-600">
+              register
+            </Link>
 
 
           </div>
