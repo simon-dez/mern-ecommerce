@@ -7,28 +7,35 @@ import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import connectDB from './config/db.js';
 import chalk from 'chalk';
+import User from './models/User.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
-dotenv.config();
+const PORT = process.env.PORT || 5000;
+
 
 // Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
 
 // Routes
 
+//app.use('/api/auth',authRoutes);
+//app.use('/api/products', productRoutes);
+//app.use('/api/orders', orderRoutes);
+
+
 app.use('/api/auth',authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
 
 // Database connection
-// connectDB();
 
 app.listen(PORT, () => {
-  console.log(chalk.bold.bgYellow(`Server listening on port ${PORT}`));
+  connectDB();
+console.log(chalk.bold.bgYellow(`Server listening on port ${PORT}`));
 });
 
 
