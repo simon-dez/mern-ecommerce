@@ -50,7 +50,7 @@ function AuthLogin() {
           <p className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">Dont have an account?  <a href="/register" className="underline decoration-[#45423D]">
             Register
           </a></p>
-         
+
         </div>
     );
 
@@ -62,5 +62,5 @@ function AuthLogin() {
 
   };
 
- 
+
 export default AuthLogin;

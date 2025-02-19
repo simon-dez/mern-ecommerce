@@ -15,10 +15,6 @@ function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-
-
-
-
         const response = await axios.get(`http://localhost:5000/api/products/${id}`);
         if (!response.data.sizes || !Array.isArray(response.data.sizes)) {
           console.error('Invalid sizes data:', response.data.sizes);
@@ -66,7 +62,7 @@ function ProductDetail() {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-white mt-4">
+    <div className="container mx-auto px-4 py-8 mt-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Image Section */}
         <div className="md:w-3/5">
