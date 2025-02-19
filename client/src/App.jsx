@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/shopping-view/Footer";
@@ -11,19 +10,21 @@ import AdminOrders from "./pages/admin-view/Orders";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
 import Home from "./pages/shopping-view/home";
-import Account from "./pages/shopping-view/account";
+import Account from "./pages/shopping-view/Account";
 import Checkout from "./pages/shopping-view/checkout";
 import PageNotFound from "./pages/not-found/PageNotFound";
 import Cart from "./pages/shopping-view/Cart";
 import AboutUs from "./components/shopping-view/AboutUs";
+import Orders from "./pages/shopping-view/Orders";
+import Addresses from "./pages/shopping-view/Addresses";
 
 function App() {
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      
-      <div className="mt-16">
+
+      <main className="flex-grow pt-16">
         <Routes>
           {/* Admin Routes */}
           <Route path="/admin" element={<Dashboard />} />
@@ -39,6 +40,8 @@ function App() {
           {/* Shopping Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/account/orders" element={<Orders />} />
+          <Route path="/account/addresses" element={<Addresses />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/products" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
@@ -49,7 +52,7 @@ function App() {
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </div>
+      </main>
       <Footer />
 
 
