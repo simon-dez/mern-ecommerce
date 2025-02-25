@@ -7,6 +7,7 @@ import ProductDetail from "./pages/shopping-view/ProductDetail";
 import Dashboard from "./pages/admin-view/Dashboard";
 import AdminProducts from "./pages/admin-view/Products";
 import AdminOrders from "./pages/admin-view/Orders";
+import AdminUsers from "./pages/admin-view/Users";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
 import Home from "./pages/shopping-view/home";
@@ -30,6 +31,8 @@ function App() {
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+
 
 
           {/* Auth Routes */}
