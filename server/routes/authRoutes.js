@@ -1,6 +1,11 @@
 import express, { Router } from 'express';
+
 import { signup, login, logout , verifyEmail, forgotPassword, resetPassword, checkAuth} from '../controllers/authController.js';
 import { verifyToken } from '../middleware/verifyToken.js';
+
+
+import { signup, login, logout , verifyEmail, forgotPassword, resetPassword} from '../controllers/authController.js';
+import { verify } from 'crypto';
 
 
 const router = express.Router();
