@@ -10,6 +10,8 @@ import chalk from 'chalk';
 import User from './models/User.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
+import { verifyToken } from './middleware/verifyToken.js';
 
 dotenv.config();
 
@@ -20,6 +22,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 
 // Routes
