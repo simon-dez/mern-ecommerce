@@ -11,7 +11,7 @@ function AuthRegister() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   
-const {signup, error, isLoading} = useAuthStore();
+const {signup, error} = useAuthStore();
 const navigate = useNavigate();
 
   const handleSignup =  async (e) => {;
