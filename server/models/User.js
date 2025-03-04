@@ -7,12 +7,14 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     lastLogin: { type: Date, default: Date.now },
+    role :{type:String,enum:['user','admin'],default:'user'},
     isVerified: { type: Boolean, default: false },
     verificationToken: String,
     resetPasswordToken: String,
     resetPasswordExpireAt: Date,
     verificationTokenExpireAt: Date,
     },
+    
     { timestamps: true });
 
     const User = mongoose.model("User", userSchema);
