@@ -1,15 +1,29 @@
 import  { useState } from "react";
+import { useAuthStore } from "../../store/authStore.js";
+import { useNavigate } from "react-router-dom";
+
 //import { Link } from "react-router-dom";
 //import axios from "axios";
 
 function AuthLogin() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [name, setName] = useState("");
+  
 
-  const handleLogin = (e) => {
+  const {login, error} = useAuthStore();
+ const navigate = useNavigate();
 
-    e.preventDefault();}
+  const handleLogin = async (e) => {
+          e.preventDefault();
+          try {
+            await login (email,pass);
+            navigate("/");
+          } catch (error) {
+            console.log(error);
+         
+          }
+          
+        }
     //   axios
     //    .post("", { name, email, pass })
     //   .then((result) => console.log(result))
@@ -42,6 +56,7 @@ function AuthLogin() {
                 name="password"
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#45423D] sm:text-sm/6"
               />
+              {error && <p className="text-red-500 font-semibold mt-2">{error}</p>}
             </div>
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <button className="flex w-full justify-center rounded-md bg-[#6C6A61] px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-[#45423D] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#45423D]" type="submit">Login</button>
