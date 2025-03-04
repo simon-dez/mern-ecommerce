@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import  { useState } from "react";
+import { useAuthStore } from "../../store/authStore.js";
+import { useNavigate } from "react-router-dom";
+
+
 //import { Link } from "react-router-dom";
 //import axios from "axios";
 
@@ -7,20 +11,24 @@ function AuthRegister() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   
+const {signup, error, isLoading} = useAuthStore();
+const navigate = useNavigate();
 
-
-
-  const handleSignup =  async (e) => {
+  const handleSignup =  async (e) => {;
               e.preventDefault();
+              try {
+                await signup(email,password,username);
+                navigate("/verify-email");
+              } catch (error) {
+                console.log(error);
              
               }
-
-            
+              
     //   axios
     //    .post("", { name, email, pass })
     //   .then((result) => console.log(result))
     //    .catch((err) => console.log(err));
-
+            };
     return (
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#C5C7CA]">
           <h2 className="sm:mx-auto sm:w-full sm:max-w-sm text-2xl">Register</h2>
@@ -33,17 +41,19 @@ function AuthRegister() {
                 Username
               </label>
               <input
+                
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 name="name"
                 id="name"
-                placeholder="full name"
+                placeholder="Full name"
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#45423D] sm:text-sm/6"
               />
             </div>
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
               <label className="block text-sm/6 font-medium text-gray-900" htmlFor="email">Email</label>
               <input
+                
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
@@ -56,6 +66,7 @@ function AuthRegister() {
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
               <label className="block text-sm/6 font-medium text-gray-900" htmlFor="password">Password</label>
               <input
+                
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
@@ -64,6 +75,7 @@ function AuthRegister() {
                 name="password"
                 className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#45423D] sm:text-sm/6"
               />
+              {error && <p className="text-red-500 font-semibold mt-2">{error}</p>}
             </div>
             
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -77,15 +89,8 @@ function AuthRegister() {
         </div>
     );
 
-    //e.preventDefault();
-    // For testing, save dummy registered user data to localStorage
-    //const dummyUser = { email, name };
-    //localStorage.setItem("user", JSON.stringify(dummyUser));
-    // Redirect to checkout after registration 
-    //
-    window.location.href = "/checkout";
-
-  };
+  }
+  
 
   
 export default AuthRegister;

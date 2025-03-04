@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/shopping-view/Footer";
 import Navbar from "./components/shopping-view/Navbar";
@@ -17,8 +17,19 @@ import Cart from "./pages/shopping-view/Cart";
 import AboutUs from "./components/shopping-view/AboutUs";
 import Orders from "./pages/shopping-view/Orders";
 import Addresses from "./pages/shopping-view/Addresses";
+import EmailVerificationPage from "./pages/auth/EmailVerficationPage";
+import { Toaster } from "react-hot-toast";
+import { useAuthStore } from "./store/authStore";
+
 
 function App() {
+  const { ischeckingAuth, checkAuth,isAuthenticated, user } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+  console.log(isAuthenticated);
+  console.log(user);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -35,6 +46,7 @@ function App() {
           {/* Auth Routes */}
           <Route path="/login" element={<AuthLogin />} />
           <Route path="/register" element={<AuthRegister />} />
+          <Route path="/verify-email" element={<EmailVerificationPage/>} />
 
 
           {/* Shopping Routes */}
@@ -52,6 +64,7 @@ function App() {
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <Toaster />
       </main>
       <Footer />
 

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 //import { Link } from "react-router-dom";
 //import axios from "axios";
 
 function AuthLogin() {
-  const [email, setEmail] = useState("test@demo.com");
-  const [pass, setPass] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   const [name, setName] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
 
     e.preventDefault();}
     //   axios
@@ -18,7 +18,7 @@ function AuthLogin() {
     return (
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#C5C7CA]">
           <h2 className="sm:mx-auto sm:w-full sm:max-w-sm text-2xl">Login</h2>
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
               <label className="block text-sm/6 font-medium text-gray-900" htmlFor="email">Email</label>
               <input
@@ -54,12 +54,7 @@ function AuthLogin() {
         </div>
     );
 
-    e.preventDefault();
-    // For testing
-    const dummyUser = { email, name: "Test User" };
-    localStorage.setItem("user", JSON.stringify(dummyUser));
-    window.location.href = "/checkout";
-
+    
   };
 
 
