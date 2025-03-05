@@ -1,8 +1,6 @@
-
-import pagenotfound from '../../assets/pagenotfound.jpg';
-
 import { Link } from 'react-router-dom';
 import { AlertTriangle } from 'lucide-react';
+import pagenotfound from '../../assets/pagenotfound.jpg';
 
 const PageNotFound = () => {
   return (
@@ -11,10 +9,7 @@ const PageNotFound = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 flex items-center justify-center p-4 overflow-hidden relative"
     style={{ backgroundImage: `url(${pagenotfound})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      {/* Background Animated Shapes */}
-
-      
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <svg 
           className="absolute animate-float-slow top-1/4 left-1/4 w-32 h-32 text-purple-300" 
           fill="currentColor" 
@@ -31,7 +26,7 @@ const PageNotFound = () => {
         </svg>
       </div>
 
-      {/* Main 404 Content */}
+      
       <div className="relative z-10 text-center backdrop-blur-sm rounded-2xl shadow-2xl p-8 sm:p-12 transform transition-all duration-500 hover:scale-105">
         <div className="flex justify-center mb-6">
           <AlertTriangle 
