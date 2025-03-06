@@ -89,8 +89,7 @@ const navigate = useNavigate();
         </div>
     );
 
-  }
-  
+
 
   
 export default AuthRegister;
