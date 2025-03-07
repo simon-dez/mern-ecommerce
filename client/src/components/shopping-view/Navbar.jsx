@@ -12,8 +12,8 @@ function Navbar() {
 
   const menuItems = [
     {
-      label: "WOMEN",
-      path: "/category/women",
+      label: "Women",
+      path: "/category/female",
       submenu: [
         {
           title: "Clothing",
@@ -38,8 +38,8 @@ function Navbar() {
       ]
     },
     {
-      label: "MEN",
-      path: "/category/men",
+      label: "Men",
+      path: "/category/male",
       submenu: [
         {
           title: "Clothing",

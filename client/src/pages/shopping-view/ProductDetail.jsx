@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../../context/CartContext';
@@ -67,15 +67,15 @@ function ProductDetail() {
         {/* Image Section */}
         <div className="md:w-3/5">
           <img
-            src={product.imageUrl}
-            alt={product.name}
+            src={product.image}
+            alt={product.product}
             className="w-full h-auto object-cover rounded-lg"
           />
         </div>
 
         {/* Product Info Section */}
         <div className="md:w-2/5">
-          <h1 className="text-2xl font-semibold mb-2">{product.name}</h1>
+          <h1 className="text-2xl font-semibold mb-2">{product.product}</h1>
           <div className="text-gray-700 mb-4">${product.price}</div>
 
           <div className="mb-4">

@@ -5,6 +5,7 @@ const productSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     description: { type: String, required: true },
     imageUrl: { type: String, required: true },
+    category: { type: String, enum: ['male', 'female','jewerely']},
     sizes: [
         {
             size: { type: String, required: true },
@@ -15,7 +16,7 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productSchema);
 
-const sampleProducts = [
+/*const sampleProducts = [
   {
     _id: '1',
     name: 'Classic Leather Jacket',
@@ -101,5 +102,6 @@ const sampleProducts = [
     ]
   },
 ];
+*/
+export default Product;
 
-export { Product, sampleProducts };

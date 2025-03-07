@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductCard from '../../components/shopping-view/ProductCard';
 import ProductSort from '../../components/shopping-view/ProductSort';
 
 function ProductOverview() {
+  console.log('productOverview component start render');
   const [products, setProducts] = useState([]);
   const [sortOption, setSortOption] = useState('lowest');
 
@@ -11,14 +12,16 @@ function ProductOverview() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/products');
+        console.log('response', response);
         const sortedProducts = response.data.sort((a, b) => a.price - b.price);
         setProducts(sortedProducts);
+        console.log(products);
       } catch (error) {
         console.error('Error:', error);
       }
     };
     fetchProducts();
-  }, []);
+  }, []); // Changed dependency array to []
 
   const handleSort = (value) => {
     const sorted = [...products];
