@@ -42,8 +42,6 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-router.post('/', authenticateToken, createOrder);
-router.get('/', authenticateToken, getOrders);
 
 
 export default router;
