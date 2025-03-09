@@ -8,7 +8,7 @@ function ProductCard({ product }) {
       <div className="relative overflow-hidden">
         <img
           src={product.image}
-          alt={product.product}
+          alt={product.image}
           className="w-full h-auto object-cover transition-transform duration-300 transform group-hover:scale-110"
         />
       </div>
