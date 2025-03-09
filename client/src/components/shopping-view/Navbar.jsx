@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { FaBars, FaXmark, FaUser, FaCartShopping } from 'react-icons/fa6';
+import Logo from '../../assets/company-logo2.png';
 
 function Navbar() {
   const { cart } = useCart();
@@ -40,6 +41,58 @@ function Navbar() {
     {
       label: "Men",
       path: "/category/male",
+      submenu: [
+        {
+          title: "Clothing",
+          items: ["Suits", "Shirts", "Pants", "Jeans", "Jackets & Coats", "Knitwear", "T-shirts", "Activewear"]
+        },
+        {
+          title: "Shoes",
+          items: ["Boots", "Sneakers", "Dress Shoes", "Loafers", "Sandals", "Athletic"]
+        },
+        {
+          title: "Bags",
+          items: ["Briefcases", "Backpacks", "Messenger Bags", "Travel Bags", "Wallets"]
+        },
+        {
+          title: "Accessories",
+          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"]
+        },
+        {
+          title: "Collections",
+          items: ["New Arrivals", "Trending Now", "Bestsellers", "Special Prices", "Coming Soon"]
+        }
+      ]
+    },
+    {
+      label: "Jewelry",
+      path: "/category/jewelery",
+      submenu: [
+        {
+          title: "Clothing",
+          items: ["Suits", "Shirts", "Pants", "Jeans", "Jackets & Coats", "Knitwear", "T-shirts", "Activewear"]
+        },
+        {
+          title: "Shoes",
+          items: ["Boots", "Sneakers", "Dress Shoes", "Loafers", "Sandals", "Athletic"]
+        },
+        {
+          title: "Bags",
+          items: ["Briefcases", "Backpacks", "Messenger Bags", "Travel Bags", "Wallets"]
+        },
+        {
+          title: "Accessories",
+          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"]
+        },
+        {
+          title: "Collections",
+          items: ["New Arrivals", "Trending Now", "Bestsellers", "Special Prices", "Coming Soon"]
+        }
+      ]
+    },
+    {
+      label: "All Products",
+      path: "/products",
       submenu: [
         {
           title: "Clothing",
@@ -133,9 +186,9 @@ function Navbar() {
           </div>
 
           {/* Centered Logo */}
-          <div className="flex-1 flex justify-center">
+          <div className="flex-1 flex justify-center ">
             <Link to="/" className="text-3xl font-bold text-gray-900">
-              DEDSV
+              <img src={Logo} alt="company logo" className="w-auto h-50 " />
             </Link>
           </div>
 

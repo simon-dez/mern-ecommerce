@@ -4,21 +4,19 @@ import ProductCard from "./ProductCard";
 
 function Products() {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/products");
-        console.log("response", response);
-        const sortedProducts = response.data.sort((a, b) => a.price - b.price);
-        console.log("sortedProducts", sortedProducts);
-        setProducts(response.data);
-        console.log(products);
+        console.log("Fetched products:", response.data);
+        setProducts(response.data.sort((a, b) => a.price - b.price));
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error fetching products:", error);
       }
     };
     fetchProducts();
-  }, []);
+  }, []); 
 
   return (
     <div>
@@ -27,7 +25,6 @@ function Products() {
           <ProductCard key={product._id} product={product} />
         ))}
       </div>
-    
     </div>
   );
 }

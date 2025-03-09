@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios';
 import ProductCard from '../../components/shopping-view/ProductCard';
+//import ProductSort from '../../components/shopping-view/ProductSort';
+
 
 function TestComp() {
     const [products, setProducts] = useState([]);
@@ -10,17 +12,17 @@ function TestComp() {
     
     useEffect(() => {    
         axios(`http://localhost:5000/api/products/category/${category}‍`)
-            .then(res => {setProducts(res.data); console.log(products)})
+            .then(res => {setProducts(res.data); console.log(res.data)})
             .catch(err=> console.error('Error:', err))
     }, [category]);
   
   
   return (
     <div className="container mx-auto px-4 py-8 mt-8 relative z-0">
-      {/* <ProductSort
+      {/*<ProductSort
         sortOption={sortOption}
         onSortChange={handleSort}
-      /> */}
+      />*/} 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map(((product, id)=> <ProductCard key={id}  product={product}>{console.log(product)}</ProductCard>))}
       </div>
@@ -28,4 +30,4 @@ function TestComp() {
   );
 }
 
-export default TestComp
+export default TestComp 
