@@ -21,6 +21,7 @@ import Addresses from "./pages/shopping-view/Addresses";
 import EmailVerificationPage from "./pages/auth/EmailVerficationPage";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
+import TestComp from './pages/shopping-view/TestComp'
 
 
 function App() {
@@ -29,8 +30,8 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
-  console.log(isAuthenticated);
-  console.log(user);
+  // console.log(isAuthenticated);
+  // console.log(user);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -50,7 +51,7 @@ function App() {
           <Route path="/login" element={<AuthLogin />} />
           <Route path="/register" element={<AuthRegister />} />
           <Route path="/verify-email" element={<EmailVerificationPage/>} />
-
+          
 
           {/* Shopping Routes */}
           <Route path="/" element={<Home />} />
@@ -58,11 +59,12 @@ function App() {
           <Route path="/account/orders" element={<Orders />} />
           <Route path="/account/addresses" element={<Addresses />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/category/:category" element={<TestComp />} />
+          <Route path="/category/:category" element={<ProductOverview />} />
+          <Route path="/category/:category/:subcategory" element={<ProductOverview />} />
           <Route path="/products" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/category/:category" element={<ProductOverview />} />
-          <Route path="/category/:category/:subcategory" element={<ProductOverview />} />
           <Route path="/about" element={<AboutUs />} />
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />

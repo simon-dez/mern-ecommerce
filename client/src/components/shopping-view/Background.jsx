@@ -36,21 +36,21 @@ const Background = () => {
 
         <SwiperSlide>
           <div className="slide-content item-container">
-          <button onClick={() => navigate('/category/ladies')} className="item-button">
+          <button onClick={() => navigate('/category/female')} className="item-button">
             <img
               src={womenItemsImg}
               alt="Women's Collection"
               className="item-image women-image"
             />
             </button>
-            <button onClick={() => navigate('/category/accessories')} className="item-button">
+            <button onClick={() => navigate('/category/jewelery')} className="item-button">
             <img
               src={accessoiresImg}
               alt="Accessories Collection"
               className="item-image accessories-image"
             />
             </button>
-            <button onClick={() => navigate('/category/men')} className="item-button">
+            <button onClick={() => navigate('/category/male')} className="item-button">
             shop now
             <img
               src={menItemsImg}

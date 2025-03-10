@@ -1,7 +1,8 @@
-import React from 'react';
 import { Github, Linkedin } from 'lucide-react';
 import Navbar from './Navbar';
-
+import Dineo from '../../assets/Dineo.jpeg';
+import Vlad from '../../assets/Vlad.jpg';
+import {Link} from 'react-router-dom';
 
 
 
@@ -17,23 +18,23 @@ const AboutUs = () => {
             role: "Co-Founder",
             image: "../src/assets/",
             bio: "I like playing around with CSS and make pages look awesome. I'm excited to collaborate with others and bring innovative ideas to life in the digital world.",
-            github: "#",
+            github: "https://github.com/simon-dez",
             linkedin: "#"
         },
         {
             name: "Vladyslav Plugin",
             role: "Co-Founder",
-            image: "../src/assets/Resume.jpg",
+            image: Vlad,
             bio: "I am a gamer and passionate about web development, making the online world more accessible and enjoyable for everyone.",
-            github: "#",
+            github: "https://github.com/Kainec1989",
             linkedin: "#"
         },
         {
             name: "Dineo Modiselle",
             role: "Co-Founder",
-            image: "../src/assets/Dineo.jpeg",
+            image: Dineo,
             bio: "The development is so innovative and exciting that I have made it my favorite hobby.",
-            github: "#",
+            github: "https://github.com/Dineo-Modiselle",
             linkedin: "#"
         },
         {
@@ -41,7 +42,7 @@ const AboutUs = () => {
             role: "Co-Founder",
             image: "../src/assets/",
             bio: "My expertise in coding, design, and user experience helps to bring ideas to life on the internet",
-            github: "#",
+            github: "https://github.com/xxxDMTxxx",
             linkedin: "#"
         },
         {
@@ -76,7 +77,7 @@ const AboutUs = () => {
                     <div className="bg-white p-6 rounded-lg shadow-md">
                         <h2 className=" font-semibold mb-4">Our mission</h2>
                         <p className="text-gray-700">
-                            <span className=" font-bold text-center mb-8">" </span>
+                            <span className=" font-bold text-center mb-8"> </span>
                             Our mission is to offer a carefully curated selection of clothing and accessories for men and women, combining quality,
                             style, and affordability. We strive to make fashion accessible to everyone.            </p>
                     </div>
@@ -93,18 +94,18 @@ const AboutUs = () => {
                                 <img
                                     src={member.image}
                                     alt={member.name}
-                                    className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover mb-6"
+                                    className="w-32 h-32 sm:w-40 sm:h-40 object-contain mb-6"
                                 />
                                 <h2 className="text-xl font-semibold mb-1">{member.name}</h2>
                                 <h6 className="text-gray-600 mb-4">{member.role}</h6>
                                 <p className="text-center text-gray-700 mb-12">{member.bio}</p>
                                 <div className="absolute bottom-6 flex space-x-4">
-                                    <a href={member.github} className="text-gray-600 hover:text-black transition-colors ">
+                                    <Link to ={member.github} className="text-gray-600 hover:text-black transition-colors ">
                                         <Github className="w-6 h-6" />
-                                    </a>
-                                    <a href={member.linkedin} className="text-gray-600 hover:text-black transition-colors">
+                                    </Link>
+                                    <Link to={member.linkedin} className="text-gray-600 hover:text-black transition-colors">
                                         <Linkedin className="w-6 h-6" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         ))}
