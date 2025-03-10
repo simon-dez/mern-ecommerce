@@ -88,7 +88,7 @@ const navigate = useNavigate();
           
         </div>
     );
-
+}
 
 
   
