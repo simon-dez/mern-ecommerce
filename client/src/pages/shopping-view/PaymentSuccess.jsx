@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 
 function PaymentSuccess() {
@@ -35,6 +36,7 @@ function PaymentSuccess() {
             </Link>
           </div>
         </div>
+
   )
 }
 

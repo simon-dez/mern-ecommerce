@@ -9,8 +9,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 router.post('/create-checkout-session', async (req, res) => {
     const { cart } = req.body; // Assuming you're passing the cart data to the backend
-  console.log("Cart received in backend:",cart);
-
     const line_items = cart.map(item => ({
       price_data: {
         currency: 'eur',  // Specify the currency (e.g., EUR)
