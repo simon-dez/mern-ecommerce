@@ -90,7 +90,7 @@ const navigate = useNavigate();
     );
 }
 
-  }
+  
   
 export default AuthRegister;
 
