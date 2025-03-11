@@ -1,6 +1,13 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js'; 
+
+
+
+// Load Stripe
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
 
 function Checkout() {
   const { cart, getCartTotal } = useCart();
@@ -22,13 +29,48 @@ function Checkout() {
     setShippingInfo(prev => ({ ...prev, [name]: value }));
   };
 
+  const handlePayNow = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cart }),
+      });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: "Unknown error" }));
+        console.error("Checkout session error:", errorData.error);
+        return alert(`Error: ${errorData.error}`);
+    }
+    
+
+
+      const session = await response.json();
+
+      const stripe = await stripePromise;
+      console.log('Stripe object:', stripe); 
+      if (!stripe) {
+        console.error("Stripe failed to load");
+        return;
+      }
+
+      // Redirect to Stripe Checkout page
+      const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
+      if (error) {
+        console.error("Stripe Checkout error", error);
+      }
+    } catch (error) {
+      console.error("Error creating checkout session", error);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
-     <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
+      <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
       {cart.length === 0 ? (
         <div>Your cart is empty.</div>
       ) : (
-  
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Shipping Information */}
           <div>
@@ -84,8 +126,11 @@ function Checkout() {
               <span>Total (VAT included):</span>
               <span>€{total.toFixed(2)}</span>
             </div>
-            <button className="w-full mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">
-               Order
+            <button
+              onClick={handlePayNow}
+              className="w-full mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+            >
+              Pay Now
             </button>
           </div>
         </div>
