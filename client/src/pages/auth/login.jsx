@@ -1,6 +1,7 @@
 import  { useState } from "react";
 import { useAuthStore } from "../../store/authStore.js";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 //import { Link } from "react-router-dom";
 //import axios from "axios";
@@ -18,6 +19,7 @@ function AuthLogin() {
           try {
             await login (email,pass);
             navigate("/");
+            toast.success("Login successfully");
           } catch (error) {
             console.log(error);
          

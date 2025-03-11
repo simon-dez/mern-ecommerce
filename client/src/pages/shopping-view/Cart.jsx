@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 
@@ -28,7 +27,7 @@ function Cart() {
               <div key={`${item._id}-${index}`} className="border p-4 rounded shadow flex justify-between items-center">
                 <div className="flex items-center space-x-4">
                   <img
-                    src={item.imageUrl}
+                    src={item.image}
                     alt={item.name}
                     className="w-20 h-20 object-cover rounded"
                   />

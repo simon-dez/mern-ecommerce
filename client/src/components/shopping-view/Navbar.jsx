@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { FaBars, FaXmark, FaUser, FaCartShopping } from 'react-icons/fa6';
@@ -205,6 +205,15 @@ function Navbar() {
                 {cart.length}
               </span>
             </Link>
+            <Link to="/login" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
+                    Login
+                  </Link>
+                  <Link to="/register" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
+                    Register
+                  </Link>
+                  <Link to="/admin" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
+                    Admin
+                  </Link>
           </div>
         </div>
 
@@ -250,6 +259,7 @@ function Navbar() {
                   <Link to="/register" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
                     Register
                   </Link>
+                  
                 </>
               ) : null}
             </div>
