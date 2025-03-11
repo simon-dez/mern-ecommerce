@@ -22,6 +22,10 @@ import EmailVerificationPage from "./pages/auth/EmailVerficationPage";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import TestComp from './pages/shopping-view/TestComp'
+import PaymentSuccess from "./pages/shopping-view/PaymentSuccess";
+import PaymentFailure from "./pages/shopping-view/PaymentFailure";
+
+
 
 
 function App() {
@@ -66,6 +70,9 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/success" element={<PaymentSuccess />} />
+          <Route path="/cancel" element={<PaymentFailure />} />
+
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
