@@ -31,7 +31,7 @@ function Checkout() {
 
   const handlePayNow = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/create-checkout-session', {
+      const response = await fetch('http://localhost:3000/api/create-checkout-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

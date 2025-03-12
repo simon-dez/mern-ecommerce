@@ -24,6 +24,8 @@ import { useAuthStore } from "./store/authStore";
 import TestComp from './pages/shopping-view/TestComp'
 import PaymentSuccess from "./pages/shopping-view/PaymentSuccess";
 import PaymentFailure from "./pages/shopping-view/PaymentFailure";
+import PrivacyTerms from "./pages/shopping-view/PrivacyPolicies";
+import Chatbot from "./pages/shopping-view/Chatbot";
 
 
 
@@ -72,12 +74,15 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/success" element={<PaymentSuccess />} />
           <Route path="/cancel" element={<PaymentFailure />} />
+          <Route path="/privacy" element={<PrivacyTerms />} />
+          <Route path="/chatbot" element={<Chatbot />} />
 
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Toaster />
       </main>
+      <Chatbot />
       <Footer />
 
 
