@@ -7,8 +7,7 @@ function Footer  ()  {
   return (
     <footer className=" text-gray-900 py-4">
       <div className="container mx-auto text-center">
-
-        <div className="mb-8">
+       <div className="mb-8">
           <a href="/" className="mx-4 hover:text-gray-600">Home</a>
           <a href="/about" className="mx-4 hover:text-gray-600">About</a>
           <a href="/contact" className="mx-4 hover:text-gray-600">Contact</a>
@@ -29,7 +28,12 @@ function Footer  ()  {
             <FaLinkedinIn />
           </a>
         </div>
+        <div>
+          <p className="text-[#181A1B] text-sm">© {new Date().getFullYear()} DEDSV. All rights reserved.</p>
+        </div>
       </div>
+
+      
     </footer>
   );
 };

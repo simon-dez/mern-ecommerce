@@ -43,7 +43,7 @@ const Background = () => {
             <img
               src={accessoiresImg}
               alt="Accessories Collection"
-              className="item-image accessories-image  hover:cursor-pointertransform hover:scale-110 transition duration-300 ease-in-out  text-white px-4  rounded"
+              className="item-image accessories-image  hover:cursor-pointer transform hover:scale-110 transition duration-300 ease-in-out  text-white px-4  rounded"
             />
             </button>
             <button onClick={() => navigate('/category/male')} className="item-button">
