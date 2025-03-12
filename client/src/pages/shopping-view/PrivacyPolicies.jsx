@@ -95,8 +95,8 @@ const PrivacyPolicy = () => {
               </p>
               <p style={{ color: '#181A1B' }}>
                 DEDSV<br />
-                [Street Address]<br />
-                [City, State ZIP]
+                25 Long Street<br />
+                Munich, 123456
               </p>
             </section>
           </div>
