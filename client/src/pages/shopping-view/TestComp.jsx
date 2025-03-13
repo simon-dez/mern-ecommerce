@@ -11,7 +11,7 @@ function TestComp() {
 
     
     useEffect(() => {    
-        axios(`http://localhost:5000/api/products/category/${category}‍`)
+        axios(`http://localhost:3000/api/products/category/${category}‍`)
             .then(res => {setProducts(res.data); console.log(res.data)})
             .catch(err=> console.error('Error:', err))
     }, [category]);
