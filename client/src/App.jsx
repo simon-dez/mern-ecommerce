@@ -13,6 +13,9 @@ import Home from "./pages/shopping-view/home";
 import Account from "./pages/shopping-view/account";
 import Checkout from "./pages/shopping-view/checkout";
 import PageNotFound from "./pages/not-found/PageNotFound"; 
+import Contact from "./components/shopping-view/Contact";
+
+
 
 function App() {
   return (
@@ -40,6 +43,9 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
+      <Contact />
+     
+    
     </div>
   );
 }

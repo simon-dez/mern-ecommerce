@@ -8,7 +8,7 @@ function Footer  ()  {
         <div className="mb-4">
           <a href="/" className="mx-2 hover:underline">Home</a>
           <a href="/about" className="mx-2 hover:underline">About</a>
-          <a href="/contact" className="mx-2 hover:underline">Contact</a>
+          <a href="/" className="mx-2 hover:underline">Contact</a>
           <a href="/privacy" className="mx-2 hover:underline">Privacy Policy</a>
         </div>
         <div className="mb-4 flex justify-center">
