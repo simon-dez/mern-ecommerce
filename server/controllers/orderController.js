@@ -1,5 +1,6 @@
   import Order from "../models/Order.js";
   import { v4 as uuidv4 } from "uuid";
+  import { sendOrderConfirmation } from "../mailtrap/emails.js";
 
 export const createOrder = async (req, res) => {
   try {
@@ -21,6 +22,9 @@ export const createOrder = async (req, res) => {
     });
 
     await newOrder.save();
+
+    await sendOrderConfirmation(email, items,totalAmount);
+    console.log("Order created successfully:", sendOrderConfirmation);
     res.status(201).json({ message: "Order created successfully", order: newOrder});
   } catch (error) {
     console.error("Error creating order:", error);

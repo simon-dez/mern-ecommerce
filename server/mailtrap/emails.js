@@ -3,7 +3,7 @@ import {
   PASSWORD_RESET_SUCCESS_TEMPLATE,
   VERIFICATION_EMAIL_TEMPLATE,
 } from "./emailTemplate.js";
-import { mailtrapClient, sender } from "../config/mailtrap.js";
+import { mailtrapClient, recipient, sender } from "../config/mailtrap.js";
 
 
 export const sendVerificationEmail = async (email, verificationToken) => {
@@ -35,7 +35,7 @@ export const sendWelcomeEmail = async (email, name) => {
     const response = await mailtrapClient.send({
       from: sender,
       to: recipient,
-      template_uuid: "28a8d18a-f2e1-4a9d-8da7-b25aebf9f4aa",
+      template_uuid: "ee916077-613a-4cdf-a332-3a3bf07d5ac4",
       template_variables: {
         company_info_name: "DEDSV",
         name: name,
@@ -82,3 +82,33 @@ export const sendResetSuccessEmail = async (email) => {
     throw new Error(`Error sending password reset success email: ${error}`);
   }
 };
+
+
+export const sendOrderConfirmation = async (email, _id) => {
+  try {
+    const response = await mailtrapClient.send({
+      from: sender,
+      to: recipient,
+      subject: "Order Confirmation",
+      html: `
+        <h2>Thank you  for your order!</h2>
+        <p>Your order has been received.</p>
+        <h3>Order Details:</h3>
+        <ul>
+          ${_id
+            .map(
+              (item) =>
+                `<li>${item.name} - Quantity: ${item.quantity} - Price: $${item.price} - Shipping:${item.shippingAddress }</li>`
+            )
+            .join("")}
+        </ul>
+        <p>We will notify you once your order is shipped.</p>
+      `,
+    });
+
+    console.log("Order confirmation email sent to:", email);
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+};
+
