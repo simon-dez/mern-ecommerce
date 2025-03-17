@@ -1,5 +1,5 @@
-import express from 'express';
-import { createOrder, getOrders } from '../controllers/orderController.js';
+/*import express from 'express';
+//import { createOrder, getOrders } from '../controllers/orderController.js';
 import Order from '../models/Order.js';
 
 
@@ -40,6 +40,22 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+
+//router.post('/', authenticateToken, createOrder);
+//router.get('/', authenticateToken, getOrders);
+
+
+export default router;
+*/
+
+import express from 'express';
+import { createOrder } from '../controllers/orderController.js';
+
+const router = express.Router();
+
+// Create an order
+router.post('/orders', createOrder);
 
 
 
