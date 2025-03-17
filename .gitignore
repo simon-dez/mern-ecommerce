@@ -6,14 +6,16 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-./server/node_modules
-./client/node_modules
-./server/.env
-./client/.env
+
 dist
 dist-ssr
 *.local
+.env
 
+/server/node_modules
+/client/node_modules
+/server/.env
+/client/.env
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

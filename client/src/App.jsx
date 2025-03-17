@@ -22,12 +22,14 @@ import EmailVerificationPage from "./pages/auth/EmailVerficationPage";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import TestComp from './pages/shopping-view/TestComp'
+
 import PaymentSuccess from "./pages/shopping-view/PaymentSuccess";
 import PaymentFailure from "./pages/shopping-view/PaymentFailure";
 import PrivacyTerms from "./pages/shopping-view/PrivacyPolicies";
 import Chatbot from "./pages/shopping-view/Chatbot";
 import ContactUs from "./pages/shopping-view/ContactUs";
 import PayNow from "./pages/shopping-view/PayNow";
+
 
 
 
@@ -73,6 +75,7 @@ function App() {
           <Route path="/products" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/success" element={<Success />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/success" element={<PaymentSuccess />} />
           <Route path="/cancel" element={<PaymentFailure />} />

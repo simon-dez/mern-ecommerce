@@ -23,6 +23,7 @@ router.post("/create-checkout-session", async (req, res) => {
     quantity: item.quantity,
   }));
 
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -41,6 +42,7 @@ router.post("/create-checkout-session", async (req, res) => {
 
 //webhook events
 
-
-
 export default router;
+
+
+
