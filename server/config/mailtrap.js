@@ -13,6 +13,10 @@ export const sender = {
   name: "Mailtrap Test",
 };
 
-export const recipient = [{
-  email: "plugin.vg.cogmail.com",
-}]
+
+export const recipient = [
+  {
+    email: "dineo.modiselle@icloud.com",
+  }
+];
+
