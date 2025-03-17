@@ -1,27 +1,30 @@
+  import Order from "../models/Order.js";
+  import { v4 as uuidv4 } from "uuid";
 
-import Order from '../models/Order.js';
-
-// Create new order
 export const createOrder = async (req, res) => {
- try{
-    const {products, totalAmount} = req.body;
-    const order = new Order({userid: req.user._id, products, totalAmount});
-    await order.save();
-    res.status(201).json(order);
- } catch (error) {
-    res.status(500).json({error: error.message});
- }
- };
+  try {
+    //console.log("Received order data:", req.body); 
 
+    const { customerName, email, items, totalAmount, shippingInfo } = req.body;
 
-// Get all orders
-
-export const getOrders = async (req, res) => {
-    try{
-        const orders = await Order.find({userId:req.user.userId}).populate('products');
-        res.status(200).json(orders);
+    if (!customerName || !email || !items || !totalAmount || !shippingInfo) {
+      return res.status(400).json({ message: "Missing required order fields" });
     }
-    catch(error){
-        res.status(500).json({error: error.message});
-    }
+
+    const newOrder = new Order({
+      orderId: uuidv4(), // ✅ Generate a unique orderId
+      customerName,
+      email,
+      items,
+      totalAmount,
+      shippingAddress: shippingInfo,
+    });
+
+    await newOrder.save();
+    res.status(201).json({ message: "Order created successfully", order: newOrder});
+  } catch (error) {
+    console.error("Error creating order:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 };
+

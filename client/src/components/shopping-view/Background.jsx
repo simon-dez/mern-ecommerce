@@ -31,7 +31,7 @@ const Background = () => {
         <SwiperSlide>
           <div className="slide-content item-container">
           <button onClick={() => navigate('/category/female')} className="item-button">
-         <button className="border-1 p-1 m-2 hover:bg-[#6C6A61] hover:cursor-pointer "> SHOP WOMEN</button>
+         <button className="border-1 p-1 m-2 hover:bg-[#C5C7CA] hover:cursor-pointer "> SHOP WOMEN</button>
             <img
               src={womenItemsImg}
               alt="Women's Collection"
@@ -39,7 +39,7 @@ const Background = () => {
             />
             </button>
             <button onClick={() => navigate('/category/jewelery')} className="item-button">
-            <button className="border-1 p-1 m-2 hover:bg-[#6C6A61] hover:cursor-pointer ">ACCESSORIES</button>
+            <button className="border-1 p-1 m-2 hover:bg-[#C5C7CA] hover:cursor-pointer ">SHOP ACCESSORIES</button>
             <img
               src={accessoiresImg}
               alt="Accessories Collection"
@@ -47,7 +47,7 @@ const Background = () => {
             />
             </button>
             <button onClick={() => navigate('/category/male')} className="item-button">
-             <button className="border-1 p-1 m-2 hover:bg-[#6C6A61] hover:cursor-pointer">SHOP MEN</button>
+             <button className="border-1 p-1 m-2 hover:bg-[#C5C7CA] hover:cursor-pointer">SHOP MEN</button>
             <img
               src={menItemsImg}
               alt="Men's Collection"

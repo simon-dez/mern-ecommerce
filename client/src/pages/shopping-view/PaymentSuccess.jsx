@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 function PaymentSuccess() {
   return (
-    
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
           <div className="bg-white shadow-lg rounded-lg p-8 text-center max-w-md">
             <svg
               className="w-16 h-16 text-[#6C6A61] mx-auto mb-4"
@@ -36,8 +35,8 @@ function PaymentSuccess() {
             </Link>
           </div>
         </div>
-
-  )
+ )
 }
 
-export default PaymentSuccess
+
+export default PaymentSuccess;

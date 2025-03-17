@@ -1,35 +1,32 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import axios from "axios";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSendMessage = async () => {
-    if (input.trim() === '') return;
+    if (input.trim() === "") return;
 
-    
     setMessages((prevMessages) => [
       ...prevMessages,
-      { text: input, sender: 'user' },
+      { text: input, sender: "user" },
     ]);
 
-   
     try {
-      const response = await axios.post('http://localhost:3000/api/chatbot', {
+      const response = await axios.post("http://localhost:3000/api/chatbot", {
         message: input,
       });
       setMessages((prevMessages) => [
         ...prevMessages,
-        { text: response.data.reply, sender: 'bot' },
+        { text: response.data.reply, sender: "bot" },
       ]);
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
     }
 
-    
-    setInput('');
+    setInput("");
   };
 
   return (
@@ -43,13 +40,15 @@ const Chatbot = () => {
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}
+                className={`flex ${
+                  msg.sender === "user" ? "justify-end" : "justify-start"
+                } mb-2`}
               >
                 <div
                   className={`max-w-xs p-3 rounded-lg ${
-                    msg.sender === 'user'
-                      ? 'bg-[#181A1B] text-white'
-                      : 'bg-gray-200 text-gray-800'
+                    msg.sender === "user"
+                      ? "bg-[#181A1B] text-white"
+                      : "bg-gray-200 text-gray-800"
                   }`}
                 >
                   {msg.text}
@@ -62,7 +61,7 @@ const Chatbot = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
               placeholder="Type your message..."
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6C6A61]"
             />
@@ -79,7 +78,7 @@ const Chatbot = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="mt-4 px-4 py-2 bg-[#6C6A61] text-white rounded-lg hover:bg-[#6C6A61] focus:outline-none focus:ring-2 focus:ring-[#45423D]"
       >
-        {isOpen ? 'Close Chat' : 'Open Chat'}
+        {isOpen ? "Close Chat" : "Open Chat"}
       </button>
     </div>
   );
