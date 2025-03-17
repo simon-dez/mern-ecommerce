@@ -125,13 +125,13 @@ function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-900 hover:text-gray-600"
+            className="lg:hidden p-2 text-gray-900 hover:text-gray-600"
           >
             {isOpen ? <FaXmark size={24} /> : <FaBars size={24} />}
           </button>
 
           {/* Desktop Navigation - Far Left */}
-          <div className="hidden md:flex md:items-center space-x-8 absolute left-12">
+          <div className="hidden lg:flex md:items-center space-x-8 absolute left-12">
             {menuItems.map((item) => (
               <div
                 key={item.label}
@@ -186,40 +186,42 @@ function Navbar() {
           </div>
 
           {/* Centered Logo */}
-          <div className="flex-1 flex justify-center ">
-            <Link to="/" className="text-3xl font-bold text-gray-900">
-              <img src={Logo} alt="company logo" className="w-auto h-50 " />
-            </Link>
-          </div>
+          <div className="flex-1 flex justify-center">
+  <Link to="/" className="text-3xl font-bold text-gray-900">
+    {/* Show image on large screens */}
+    <img 
+      src={Logo} 
+      alt="company logo" 
+      className="w-auto h-50 hidden lg:block"  
+    />
+    {/* Show text on small and medium screens */}
+    <span className="block lg:hidden">DEDSV</span>
+  </Link>
+</div>
 
           {/* Right Side - Account and Cart */}
-          <div className="flex items-center space-x-6 absolute right-12">
-            <Link to={user ? "/account" : "/login"} className="text-gray-900 hover:text-gray-600">
+          <div className="flex items-center space-x-6 absolute right-12 :hidden">
+            <Link to={user ? "/account" : "/login"} className="text-gray-900 hover:text-gray-600 ">
               <FaUser size={20} />
             </Link>
 
             {/* Cart */}
             <Link to="/cart" className="text-gray-900 hover:text-gray-600 relative">
-              <FaCartShopping size={20} />
-              <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <FaCartShopping size={20}  className='xs:'/>
+              <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center ">
                 {cart.length}
               </span>
             </Link>
-            <Link to="/login" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
+            <Link to="/login" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ">
                     Login
                   </Link>
-                  <Link to="/register" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
-                    Register
-                  </Link>
-                  <Link to="/admin" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
-                    Admin
-                  </Link>
-          </div>
+                  
+                 </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden border-t border-gray-200 fixed top-16 left-0 right-0 bg-white h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="lg:hidden border-t border-gray-200 fixed top-16 left-0 right-0 bg-white h-[calc(100vh-4rem)] overflow-y-auto">
             <div className="pb-24">
               {menuItems.map((item) => (
                 <div key={item.label} className="py-2">

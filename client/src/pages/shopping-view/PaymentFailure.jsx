@@ -16,7 +16,8 @@ const Failure = () => {
         </svg>
         <h2 className="text-2xl font-bold text-gray-800">Payment Failed</h2>
         <p className="text-gray-600 mt-2">
-          Oops! Something went wrong while processing your payment. Please try again.
+          Oops! Something went wrong while processing your payment. Please try
+          again.
         </p>
         <div className="flex flex-col items-center gap-3 mt-6">
           <Link

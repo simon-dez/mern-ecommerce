@@ -8,11 +8,11 @@ import Dashboard from "./pages/admin-view/Dashboard";
 import AdminProducts from "./pages/admin-view/Products";
 import AdminOrders from "./pages/admin-view/Orders";
 import AdminUsers from "./pages/admin-view/Users";
-import AuthLogin from "./pages/auth/login";
-import AuthRegister from "./pages/auth/register";
-import Home from "./pages/shopping-view/home";
+import AuthLogin from "./pages/auth/Login";
+import AuthRegister from "./pages/auth/Register";
+import Home from "./pages/shopping-view/Home";
 import Account from "./pages/shopping-view/Account";
-import Checkout from "./pages/shopping-view/checkout";
+import Checkout from "./pages/shopping-view/Checkout";
 import PageNotFound from "./pages/not-found/PageNotFound";
 import Cart from "./pages/shopping-view/Cart";
 import AboutUs from "./components/shopping-view/AboutUs";
@@ -28,6 +28,7 @@ import PaymentFailure from "./pages/shopping-view/PaymentFailure";
 import PrivacyTerms from "./pages/shopping-view/PrivacyPolicies";
 import Chatbot from "./pages/shopping-view/Chatbot";
 import ContactUs from "./pages/shopping-view/ContactUs";
+import PayNow from "./pages/shopping-view/PayNow";
 
 
 
@@ -81,6 +82,8 @@ function App() {
           <Route path="/privacy" element={<PrivacyTerms />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/paynow" element={<PayNow />} />
+          
 
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
