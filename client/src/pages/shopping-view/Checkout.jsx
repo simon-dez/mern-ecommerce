@@ -26,7 +26,7 @@ function Checkout() {
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user") || "null");
     if (!storedUser) {
-      navigate("/login");
+      navigate("/checkout");
     } else {
       setCustomer({ name: storedUser.name, email: storedUser.email });
     }
