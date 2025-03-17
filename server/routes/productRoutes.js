@@ -59,4 +59,30 @@ router.post("/get-product-details", async (req, res) => {
   }
 });
 
+// Add a new product
+router.post('/', async (req, res) => {
+  const { product, price, description, image, category, sizes } = req.body;
+  try {
+      const newProduct = new Product({ product, price, description, image, category, sizes });
+      await newProduct.save();
+      res.status(201).json(newProduct);
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+});
+
+// Delete a product
+router.delete('/:id', async (req, res) => {
+  try {
+      const product = await Product.findById(req.params.id);
+      if (!product) {
+          return res.status(404).json({ error: 'Product not found' });
+      }
+      await product.remove();
+      res.json({ message: 'Product removed' });
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;

@@ -13,8 +13,10 @@ export const sender = {
   name: "Mailtrap Test",
 };
 
+
 export const recipient = [
   {
     email: "dineo.modiselle@icloud.com",
   }
 ];
+

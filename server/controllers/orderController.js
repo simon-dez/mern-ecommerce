@@ -4,7 +4,7 @@
 
 export const createOrder = async (req, res) => {
   try {
-    //console.log("Received order data:", req.body); 
+    
 
     const { customerName, email, items, totalAmount, shippingInfo } = req.body;
 
@@ -32,3 +32,13 @@ export const createOrder = async (req, res) => {
   }
 };
 
+
+export const getOrders = async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.json(orders);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
