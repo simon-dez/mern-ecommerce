@@ -17,6 +17,7 @@ import { errorHandler } from "./utils/chatbotErrorHandler.js";
 import chatbotRoutes from "./routes/chatbotRoute.js";
 import bodyParser from "body-parser";
 import cartRoute from "./routes/cartRoute.js";
+import userRoutes from "./routes/userRoutes.js";
 
 //Config
 dotenv.config();
@@ -38,6 +39,7 @@ app.use("/api", stripePaymentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api", chatbotRoutes);
 app.use("/api", cartRoute);
+app.use("/api/users", userRoutes)
 app.use(errorHandler);
 
 // Database connection

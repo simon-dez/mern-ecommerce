@@ -10,7 +10,7 @@ const Sidebar = () => {
                     <Link to="/admin" className="hover:text-gray-400">Dashboard</Link>
                 </li>
                 <li className="mb-3">
-                    <Link to="./products" className="hover:text-gray-400">Products</Link>
+                    <Link to="/admin/products" className="hover:text-gray-400">Products</Link>
                 </li>
                 <li className="mb-3">
                     <Link to="/admin/orders" className="hover:text-gray-400">Orders</Link>
