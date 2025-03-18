@@ -7,20 +7,12 @@ function Footer  ()  {
   return (
     <footer className=" text-gray-900 py-4">
       <div className="container mx-auto text-center">
-<<<<<<< HEAD
-        <div className="mb-4">
-          <a href="/" className="mx-2 hover:underline">Home</a>
-          <a href="/about" className="mx-2 hover:underline">About</a>
-          <a href="/" className="mx-2 hover:underline">Contact</a>
-          <a href="/privacy" className="mx-2 hover:underline">Privacy Policy</a>
-=======
        <div className="mb-8">
           <a href="/" className="mx-4 hover:text-gray-600">Home</a>
           <a href="/about" className="mx-4 hover:text-gray-600">About</a>
           <a href="/contact" className="mx-4 hover:text-gray-600">Contact</a>
           <a href="/privacy" className="mx-4 hover:text-gray-600">Privacy Policy</a>
 
->>>>>>> main
         </div>
         <div className="mb-4 flex justify-center">
           <a href="https://facebook.com" className="mx-2" aria-label="Facebook">
