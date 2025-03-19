@@ -29,6 +29,7 @@ import PrivacyTerms from "./pages/shopping-view/PrivacyPolicies";
 import Chatbot from "./pages/shopping-view/Chatbot";
 import ContactUs from "./pages/shopping-view/ContactUs";
 import PayNow from "./pages/shopping-view/PayNow";
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 
 
@@ -62,6 +63,7 @@ function App() {
           <Route path="/login" element={<AuthLogin />} />
           <Route path="/register" element={<AuthRegister />} />
           <Route path="/verify-email" element={<EmailVerificationPage/>} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           
 
           {/* Shopping Routes */}
