@@ -117,62 +117,51 @@ export const logout = async (req, res) => {
     .json({ success: true, message: "User logged out successfully" });
 };
 
+// Forgot password
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
   try {
     const user = await User.findOne({ email });
-
     if (!user) {
-      return res
-        .status(400)
-        .json({ success: false, message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
-    const resetToken = crypto.randomBytes(20).toString("hex");
-    const resetTokenExpireAt = Date.now() + 1 * 60 * 1000; //1 hour
+    const resetToken = crypto.randomBytes(32).toString("hex");
     user.resetPasswordToken = resetToken;
-    user.resetPasswordExpireAt = resetTokenExpireAt;
+    user.resetPasswordExpireAt = Date.now() + 3600000; 
     await user.save();
 
-    // send email
+    const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
+    await sendPasswordResetEmail(user.email, resetUrl);
 
-    await sendPasswordResetEmail(
-      user.email,
-      `${process.env.CLIENT_URL}/reset-password/${resetToken}`
-    );
-    res.status(200).json({
-      success: true,
-      message: "Password reset email sent successfully",
-    });
+    res.status(200).json({ message: "Password reset email sent" });
   } catch (error) {
-    console.log("error in forgot password", error);
-    res.status(400).json({ success: false, message: error.message });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
 export const resetPassword = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
   try {
-    const { token } = req.params;
-    const { password } = req.body;
-
     const user = await User.findOne({
       resetPasswordToken: token,
-      resetPasswordTokenExpireAt: { $gt: Date.now() },
+      resetPasswordExpireAt: { $gt: Date.now() },
     });
+
     if (!user) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid or expired reset token" });
+      return res.status(400).json({ message: "Invalid or expired token" });
     }
+
     const hashedPassword = await bcryptjs.hash(password, 12);
     user.password = hashedPassword;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpireAt = undefined;
     await user.save();
+
     await sendResetSuccessEmail(user.email);
-    res
-      .status(200)
-      .json({ success: true, message: "Password reset successfully" });
+
+    res.status(200).json({ message: "Password reset successfully" });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -193,3 +182,5 @@ export const checkAuth = async (req, res) => {
     console.log("error in check auth", error);
   }
 };
+
+
