@@ -12,21 +12,17 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          setError('No token found. Please log in.');
-          return;
-        }
+        
 
         const [ordersResponse, usersResponse] = await Promise.all([
           axios.get('http://localhost:3000/api', {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
           }),
           axios.get('http://localhost:3000/api/users', {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
           }),
         ]);
