@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect} from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Footer from "./components/shopping-view/Footer";
 import Navbar from "./components/shopping-view/Navbar";
 import ProductOverview from "./pages/shopping-view/ProductOverview";
@@ -34,6 +34,16 @@ import ForgotPassword from './pages/auth/ForgotPassword';
 
 
 
+//redirect authenticated users to home page
+const RedirectAuthenticatedUser = ({children}) => {
+  const {isAuthenticated, user} = useAuthStore();
+
+  if(isAuthenticated && user.isVerified){
+    return <Navigate to="/" replace />
+  }
+
+  return children
+}
 
 
 function App() {
@@ -60,8 +70,16 @@ function App() {
 
 
           {/* Auth Routes */}
-          <Route path="/login" element={<AuthLogin />} />
-          <Route path="/register" element={<AuthRegister />} />
+          <Route path="/login" element={
+            <RedirectAuthenticatedUser>
+              <AuthLogin />
+            </RedirectAuthenticatedUser>} />
+          <Route path="/register" element={
+            <RedirectAuthenticatedUser>
+              <AuthRegister />
+            </RedirectAuthenticatedUser>
+          }
+             />
           <Route path="/verify-email" element={<EmailVerificationPage/>} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           
