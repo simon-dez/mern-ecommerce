@@ -10,15 +10,9 @@ const AdminOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                    setError('No token found. Please log in.');
-                    return;
-                }
-
                 const response = await axios.get('http://localhost:3000/api', {
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },
                 });
                 setOrders(response.data);
