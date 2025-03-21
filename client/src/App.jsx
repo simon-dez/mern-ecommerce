@@ -1,4 +1,4 @@
-import React, { Children, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Footer from "./components/shopping-view/Footer";
 import Navbar from "./components/shopping-view/Navbar";
@@ -20,7 +20,7 @@ import Orders from "./pages/shopping-view/Orders";
 import Addresses from "./pages/shopping-view/Addresses";
 import EmailVerificationPage from "./pages/auth/EmailVerficationPage";
 import { Toaster } from "react-hot-toast";
-import { useAuthStore } from "./store/authStore";
+import { useAuthStore } from "./store/authStore.js";
 import TestComp from "./pages/shopping-view/TestComp";
 import Success from "./pages/shopping-view/PaymentSuccess";
 import PaymentSuccess from "./pages/shopping-view/PaymentSuccess";
@@ -31,23 +31,35 @@ import ContactUs from "./pages/shopping-view/ContactUs";
 import PayNow from "./pages/shopping-view/PayNow";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 
-const ProtectRoutes = ({roles}) => {
-  //const {isAuthenticated, user} = useAuthStore();
+const ProtectRoutes = ({ roles }) => {
+  const {isAuthenticated, user} = useAuthStore();
   
-  const user = 
-     {
-      _id: "67d948dcf09ca90df0416a99",
-      name: "Vladyslav",
-      email: "plugin.vg.co@gmail.com",
-      orders: [],
-      role: "user",
-     }
+  //const user = 
+  //   {
+  //    _id: "67d948dcf09ca90df0416a99",
+  //    name: "Vladyslav",
+  //    email: "plugin.vg.co@gmail.com",
+  //    orders: [],
+  //    role: "admin",
+  //   }
 
-     console.log(user)
   //if(!isAuthenticated || !user.isVerified) return <Navigate to="/login" replace />
   //if(isAuthenticated && user.isVerified && !roles.includes(user.role)) return <Navigate to="/unauthorized" replace />
-  if( ["admin"].includes(user.role)) return <Outlet />
-}
+  //if( ["admin"].includes(user.role)) return <Outlet />
+
+  // If the user is not authenticated, redirect to login
+  if (!isAuthenticated || !user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // If the user's role is not included in the allowed roles, redirect to unauthorized
+  if (!roles.includes(user.role)) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  // If all checks pass, render the protected route
+  return <Outlet />;
+};
 
 function App() {
   const { ischeckingAuth, checkAuth, isAuthenticated, user } = useAuthStore();
@@ -55,14 +67,26 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
-  // console.log(isAuthenticated);
-  // console.log(user);
+
+
+  console.log("isAuthenticated:", isAuthenticated);
+  console.log("user:", user);
+
+  // Show a loading indicator while checking authentication
+  if (ischeckingAuth) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow pt-16">
         <Routes>
+          {/* Redirect admin users to the dashboard */}
+          {isAuthenticated && user?.role === "admin" && (
+            <Route path="*" element={<Navigate to="/admin" replace />} />
+          )}
+
           {/* Admin Routes */}
           <Route path="/admin" element={<ProtectRoutes roles={["admin"]}/>} >
             <Route index element={<Dashboard />} />

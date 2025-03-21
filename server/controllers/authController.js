@@ -87,26 +87,36 @@ export const login = async (req, res) => {
         .status(400)
         .json({ success: false, message: "Invalid credentials" });
     }
+
     const isPasswordValid = await bcryptjs.compare(password, user.password);
     if (!isPasswordValid) {
       return res
         .status(400)
         .json({ success: false, message: "Invalid credentials" });
     }
+
+    // Generate token and set it in cookies
     generateTokenAndSetCookie(res, user._id);
+
+    // Update last login time
     user.lastLogin = new Date();
     await user.save();
+
+    // Return the user object in the response
     res.status(200).json({
       success: true,
       message: "User logged in successfully",
       user: {
-        ...user._doc,
-        password: undefined,
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        lastLogin: user.lastLogin,
       },
     });
   } catch (error) {
-    console.log("error in login", error);
-    res.status(400).json({ success: false, message: error.message });
+    console.error("Error during login:", error);
+    res.status(500).json({ success: false, message: "Server error" });
   }
 };
 
