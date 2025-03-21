@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
-import { FaBars, FaXmark, FaUser, FaCartShopping } from 'react-icons/fa6';
-import Logo from '../../assets/company-logo2.png';
-import { useAuthStore } from '../../store/authStore';
+import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
+import { FaBars, FaXmark, FaUser, FaCartShopping } from "react-icons/fa6";
+import Logo from "../../assets/company-logo2.png";
+import { useAuthStore } from "../../store/authStore.js";
 
 function Navbar() {
   const { cart } = useCart();
@@ -11,7 +11,7 @@ function Navbar() {
   const [activeCategory, setActiveCategory] = useState(null);
   //const user = JSON.parse(localStorage.getItem('user') || 'null');
   const dropdownRef = useRef(null);
-  const {isAuthenticated, user} = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore();
 
   const menuItems = [
     {
@@ -20,25 +20,54 @@ function Navbar() {
       submenu: [
         {
           title: "Clothing",
-          items: ["Dresses", "Tops", "Skirts", "Pants", "Jackets & Coats", "Knitwear", "Suits", "Activewear"]
+          items: [
+            "Dresses",
+            "Tops",
+            "Skirts",
+            "Pants",
+            "Jackets & Coats",
+            "Knitwear",
+            "Suits",
+            "Activewear",
+          ],
         },
         {
           title: "Shoes",
-          items: ["Boots", "Heels", "Flats", "Sneakers", "Sandals", "Loafers"]
+          items: ["Boots", "Heels", "Flats", "Sneakers", "Sandals", "Loafers"],
         },
         {
           title: "Bags",
-          items: ["Tote Bags", "Shoulder Bags", "Cross-body Bags", "Clutches", "Mini Bags", "Backpacks"]
+          items: [
+            "Tote Bags",
+            "Shoulder Bags",
+            "Cross-body Bags",
+            "Clutches",
+            "Mini Bags",
+            "Backpacks",
+          ],
         },
         {
           title: "Accessories",
-          items: ["Jewelry", "Belts", "Sunglasses", "Scarves", "Hats", "Gloves"]
+          items: [
+            "Jewelry",
+            "Belts",
+            "Sunglasses",
+            "Scarves",
+            "Hats",
+            "Gloves",
+          ],
         },
         {
           title: "Collections",
-          items: ["New Arrivals", "Trending Now", "Bestsellers", "Special Prices", "Coming Soon"]
-        }
-      ]
+          items: [
+            "New Arrivals",
+            "Trending Now",
+            "Bestsellers",
+            "Special Prices",
+            "Coming Soon",
+          ],
+        },
+      ],
     },
     {
       label: "Men",
@@ -46,25 +75,53 @@ function Navbar() {
       submenu: [
         {
           title: "Clothing",
-          items: ["Suits", "Shirts", "Pants", "Jeans", "Jackets & Coats", "Knitwear", "T-shirts", "Activewear"]
+          items: [
+            "Suits",
+            "Shirts",
+            "Pants",
+            "Jeans",
+            "Jackets & Coats",
+            "Knitwear",
+            "T-shirts",
+            "Activewear",
+          ],
         },
         {
           title: "Shoes",
-          items: ["Boots", "Sneakers", "Dress Shoes", "Loafers", "Sandals", "Athletic"]
+          items: [
+            "Boots",
+            "Sneakers",
+            "Dress Shoes",
+            "Loafers",
+            "Sandals",
+            "Athletic",
+          ],
         },
         {
           title: "Bags",
-          items: ["Briefcases", "Backpacks", "Messenger Bags", "Travel Bags", "Wallets"]
+          items: [
+            "Briefcases",
+            "Backpacks",
+            "Messenger Bags",
+            "Travel Bags",
+            "Wallets",
+          ],
         },
         {
           title: "Accessories",
-          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"]
+          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"],
         },
         {
           title: "Collections",
-          items: ["New Arrivals", "Trending Now", "Bestsellers", "Special Prices", "Coming Soon"]
-        }
-      ]
+          items: [
+            "New Arrivals",
+            "Trending Now",
+            "Bestsellers",
+            "Special Prices",
+            "Coming Soon",
+          ],
+        },
+      ],
     },
     {
       label: "Jewelry",
@@ -72,25 +129,53 @@ function Navbar() {
       submenu: [
         {
           title: "Clothing",
-          items: ["Suits", "Shirts", "Pants", "Jeans", "Jackets & Coats", "Knitwear", "T-shirts", "Activewear"]
+          items: [
+            "Suits",
+            "Shirts",
+            "Pants",
+            "Jeans",
+            "Jackets & Coats",
+            "Knitwear",
+            "T-shirts",
+            "Activewear",
+          ],
         },
         {
           title: "Shoes",
-          items: ["Boots", "Sneakers", "Dress Shoes", "Loafers", "Sandals", "Athletic"]
+          items: [
+            "Boots",
+            "Sneakers",
+            "Dress Shoes",
+            "Loafers",
+            "Sandals",
+            "Athletic",
+          ],
         },
         {
           title: "Bags",
-          items: ["Briefcases", "Backpacks", "Messenger Bags", "Travel Bags", "Wallets"]
+          items: [
+            "Briefcases",
+            "Backpacks",
+            "Messenger Bags",
+            "Travel Bags",
+            "Wallets",
+          ],
         },
         {
           title: "Accessories",
-          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"]
+          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"],
         },
         {
           title: "Collections",
-          items: ["New Arrivals", "Trending Now", "Bestsellers", "Special Prices", "Coming Soon"]
-        }
-      ]
+          items: [
+            "New Arrivals",
+            "Trending Now",
+            "Bestsellers",
+            "Special Prices",
+            "Coming Soon",
+          ],
+        },
+      ],
     },
     {
       label: "All Products",
@@ -98,26 +183,54 @@ function Navbar() {
       submenu: [
         {
           title: "Clothing",
-          items: ["Suits", "Shirts", "Pants", "Jeans", "Jackets & Coats", "Knitwear", "T-shirts", "Activewear"]
+          items: [
+            "Suits",
+            "Shirts",
+            "Pants",
+            "Jeans",
+            "Jackets & Coats",
+            "Knitwear",
+            "T-shirts",
+            "Activewear",
+          ],
         },
         {
           title: "Shoes",
-          items: ["Boots", "Sneakers", "Dress Shoes", "Loafers", "Sandals", "Athletic"]
+          items: [
+            "Boots",
+            "Sneakers",
+            "Dress Shoes",
+            "Loafers",
+            "Sandals",
+            "Athletic",
+          ],
         },
         {
           title: "Bags",
-          items: ["Briefcases", "Backpacks", "Messenger Bags", "Travel Bags", "Wallets"]
+          items: [
+            "Briefcases",
+            "Backpacks",
+            "Messenger Bags",
+            "Travel Bags",
+            "Wallets",
+          ],
         },
         {
           title: "Accessories",
-          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"]
+          items: ["Watches", "Belts", "Ties", "Sunglasses", "Hats", "Gloves"],
         },
         {
           title: "Collections",
-          items: ["New Arrivals", "Trending Now", "Bestsellers", "Special Prices", "Coming Soon"]
-        }
-      ]
-    }
+          items: [
+            "New Arrivals",
+            "Trending Now",
+            "Bestsellers",
+            "Special Prices",
+            "Coming Soon",
+          ],
+        },
+      ],
+    },
   ];
 
   return (
@@ -151,10 +264,10 @@ function Navbar() {
                   <div
                     className="fixed left-0 right-0 w-screen"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.9)',
-                      backdropFilter: 'blur(10px)',
-                      top: '64px',
-                      paddingTop: '10px', // Added padding top to create hoverable gap
+                      background: "rgba(255, 255, 255, 0.9)",
+                      backdropFilter: "blur(10px)",
+                      top: "64px",
+                      paddingTop: "10px", // Added padding top to create hoverable gap
                     }}
                     onMouseEnter={() => setActiveCategory(item.label)}
                     onMouseLeave={() => setActiveCategory(null)}
@@ -163,12 +276,16 @@ function Navbar() {
                       <div className="grid grid-cols-5 gap-8">
                         {item.submenu.map((section) => (
                           <div key={section.title}>
-                            <h3 className="text-gray-900 font-medium mb-4">{section.title}</h3>
+                            <h3 className="text-gray-900 font-medium mb-4">
+                              {section.title}
+                            </h3>
                             <ul className="space-y-3">
                               {section.items.map((subItem) => (
                                 <li key={subItem}>
                                   <Link
-                                    to={`${item.path}/${subItem.toLowerCase().replace(/ /g, '-')}`}
+                                    to={`${item.path}/${subItem
+                                      .toLowerCase()
+                                      .replace(/ /g, "-")}`}
                                     className="text-gray-600 hover:text-gray-900 text-sm block"
                                     onClick={() => setActiveCategory(null)}
                                   >
@@ -189,42 +306,53 @@ function Navbar() {
 
           {/* Centered Logo */}
           <div className="flex-1 flex justify-center">
-  <Link to="/" className="text-3xl font-bold text-gray-900">
-    {/* Show image on large screens */}
-    <img 
-      src={Logo} 
-      alt="company logo" 
-      className="w-auto h-50 hidden lg:block"  
-    />
-    {/* Show text on small and medium screens */}
-    <span className="block lg:hidden">DEDSV</span>
-  </Link>
-</div>
+            <Link to="/" className="text-3xl font-bold text-gray-900">
+              {/* Show image on large screens */}
+              <img
+                src={Logo}
+                alt="company logo"
+                className="w-auto h-50 hidden lg:block"
+              />
+              {/* Show text on small and medium screens */}
+              <span className="block lg:hidden">DEDSV</span>
+            </Link>
+          </div>
 
           {/* Right Side - Account and Cart */}
           <div className="flex items-center space-x-6 absolute right-12 :hidden">
-            <Link to={user ? "/account" : "/login"} className="text-gray-900 hover:text-gray-600 ">
+            <Link
+              to={user ? "/account" : "/login"}
+              className="text-gray-900 hover:text-gray-600 "
+            >
               <FaUser size={20} />
             </Link>
 
             {/* Cart */}
-            <Link to="/cart" className="text-gray-900 hover:text-gray-600 relative">
-              <FaCartShopping size={20}  className='xs:'/>
+            <Link
+              to="/cart"
+              className="text-gray-900 hover:text-gray-600 relative"
+            >
+              <FaCartShopping size={20} className="xs:" />
               <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center ">
                 {cart.length}
               </span>
             </Link>
-            {console.log(isAuthenticated)}
-            {isAuthenticated? <Link to="/logout" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ">
-                    Logout
-                  </Link>: <Link to="/login" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ">
-                    Login
-                  </Link>
-            
-          }
-           
-                  
-                 </div>
+            {isAuthenticated ? (
+              <Link
+                to="/logout"
+                className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 "
+              >
+                Logout
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 "
+              >
+                Login
+              </Link>
+            )}
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -243,12 +371,16 @@ function Navbar() {
                   <div className="grid grid-cols-2 gap-2 px-4">
                     {item.submenu.map((section) => (
                       <div key={section.title} className="mb-4">
-                        <h3 className="text-sm font-medium text-gray-900 py-2">{section.title}</h3>
+                        <h3 className="text-sm font-medium text-gray-900 py-2">
+                          {section.title}
+                        </h3>
                         <div className="space-y-2">
                           {section.items.map((subItem) => (
                             <Link
                               key={subItem}
-                              to={`${item.path}/${subItem.toLowerCase().replace(/ /g, '-')}`}
+                              to={`${item.path}/${subItem
+                                .toLowerCase()
+                                .replace(/ /g, "-")}`}
                               className="block py-1 text-sm text-gray-600 hover:text-gray-900"
                               onClick={() => setIsOpen(false)}
                             >
@@ -263,13 +395,18 @@ function Navbar() {
               ))}
               {!user ? (
                 <>
-                  <Link to="/login" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
+                  <Link
+                    to="/login"
+                    className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100"
+                  >
                     Login
                   </Link>
-                  <Link to="/register" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100">
+                  <Link
+                    to="/register"
+                    className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100"
+                  >
                     Register
                   </Link>
-                  
                 </>
               ) : null}
             </div>
@@ -277,7 +414,6 @@ function Navbar() {
         )}
       </nav>
     </header>
-
   );
 }
 

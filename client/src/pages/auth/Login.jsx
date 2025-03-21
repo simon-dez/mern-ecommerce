@@ -29,6 +29,9 @@ function AuthLogin() {
 if (isAuthenticated && user.isVerified){
   navigate("/")
 }
+if (isAuthenticated && user.isVerified && user.role === "admin"){
+  navigate("/admin")
+}
   })
   //   axios
   //    .post("", { name, email, pass })
