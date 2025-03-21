@@ -1,5 +1,5 @@
-import React, { useEffect} from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React, { Children, useEffect } from "react";
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Footer from "./components/shopping-view/Footer";
 import Navbar from "./components/shopping-view/Navbar";
 import ProductOverview from "./pages/shopping-view/ProductOverview";
@@ -21,33 +21,36 @@ import Addresses from "./pages/shopping-view/Addresses";
 import EmailVerificationPage from "./pages/auth/EmailVerficationPage";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
-import TestComp from './pages/shopping-view/TestComp'
-import Success from "./pages/shopping-view/PaymentSuccess"
+import TestComp from "./pages/shopping-view/TestComp";
+import Success from "./pages/shopping-view/PaymentSuccess";
 import PaymentSuccess from "./pages/shopping-view/PaymentSuccess";
 import PaymentFailure from "./pages/shopping-view/PaymentFailure";
 import PrivacyTerms from "./pages/shopping-view/PrivacyPolicies";
 import Chatbot from "./pages/shopping-view/Chatbot";
 import ContactUs from "./pages/shopping-view/ContactUs";
 import PayNow from "./pages/shopping-view/PayNow";
-import ForgotPassword from './pages/auth/ForgotPassword';
+import ForgotPassword from "./pages/auth/ForgotPassword";
 
+const ProtectRoutes = ({roles}) => {
+  //const {isAuthenticated, user} = useAuthStore();
+  
+  const user = 
+     {
+      _id: "67d948dcf09ca90df0416a99",
+      name: "Vladyslav",
+      email: "plugin.vg.co@gmail.com",
+      orders: [],
+      role: "user",
+     }
 
-
-
-//redirect authenticated users to home page
-const RedirectAuthenticatedUser = ({children}) => {
-  const {isAuthenticated, user} = useAuthStore();
-
-  if(isAuthenticated && user.isVerified){
-    return <Navigate to="/" replace />
-  }
-
-  return children
+     console.log(user)
+  //if(!isAuthenticated || !user.isVerified) return <Navigate to="/login" replace />
+  //if(isAuthenticated && user.isVerified && !roles.includes(user.role)) return <Navigate to="/unauthorized" replace />
+  if( ["admin"].includes(user.role)) return <Outlet />
 }
 
-
 function App() {
-  const { ischeckingAuth, checkAuth,isAuthenticated, user } = useAuthStore();
+  const { ischeckingAuth, checkAuth, isAuthenticated, user } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
@@ -58,29 +61,21 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-
       <main className="flex-grow pt-16">
         <Routes>
           {/* Admin Routes */}
-          <Route path="/admin" element={<Dashboard />} />
-          <Route path="/admin/products" element={<AdminProducts />} />
-          <Route path="/admin/orders" element={<AdminOrders />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
-
-
+          <Route path="/admin" element={<ProtectRoutes roles={["admin"]}/>} >
+            <Route index element={<Dashboard />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="users" element={<AdminUsers />} />
+          </Route>
 
           {/* Auth Routes */}
-          <Route path="/login" element={
-            <RedirectAuthenticatedUser>
-              <AuthLogin />
-            </RedirectAuthenticatedUser>} />
-          <Route path="/register" element={
-            <RedirectAuthenticatedUser>
-              <AuthRegister />
-            </RedirectAuthenticatedUser>
-          }
-             />
-          <Route path="/verify-email" element={<EmailVerificationPage/>} />
+          
+          <Route path="/login" element={<AuthLogin />} />
+          <Route path="/register" element={<AuthRegister />} />
+          <Route path="/verify-email" element={<EmailVerificationPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           
 
@@ -92,7 +87,10 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/category/:category" element={<TestComp />} />
           <Route path="/category/:category" element={<ProductOverview />} />
-          <Route path="/category/:category/:subcategory" element={<ProductOverview />} />
+          <Route
+            path="/category/:category/:subcategory"
+            element={<ProductOverview />}
+          />
           <Route path="/products" element={<ProductOverview />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
@@ -104,7 +102,6 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/paynow" element={<PayNow />} />
-          
 
           {/* 404 Route */}
           <Route path="*" element={<PageNotFound />} />
@@ -113,7 +110,7 @@ function App() {
       </main>
       <Chatbot />
       <Footer />
- main
+      main
     </div>
   );
 }
