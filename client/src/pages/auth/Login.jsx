@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthStore } from "../../store/authStore.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -10,7 +10,7 @@ function AuthLogin() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const { login, error } = useAuthStore();
+  const { login, error, isAuthenticated, user } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -22,7 +22,14 @@ function AuthLogin() {
     } catch (error) {
       console.log(error);
     }
+
+
   };
+  useEffect(()=>{
+if (isAuthenticated && user.isVerified){
+  navigate("/")
+}
+  })
   //   axios
   //    .post("", { name, email, pass })
   //   .then((result) => console.log(result))

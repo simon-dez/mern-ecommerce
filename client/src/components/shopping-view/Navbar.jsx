@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { FaBars, FaXmark, FaUser, FaCartShopping } from 'react-icons/fa6';
 import Logo from '../../assets/company-logo2.png';
+import { useAuthStore } from '../../store/authStore';
 
 function Navbar() {
   const { cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
-  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  //const user = JSON.parse(localStorage.getItem('user') || 'null');
   const dropdownRef = useRef(null);
+  const {isAuthenticated, user} = useAuthStore();
 
   const menuItems = [
     {
@@ -212,9 +214,15 @@ function Navbar() {
                 {cart.length}
               </span>
             </Link>
-            <Link to="/login" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ">
+            {console.log(isAuthenticated)}
+            {isAuthenticated? <Link to="/logout" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ">
+                    Logout
+                  </Link>: <Link to="/login" className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 ">
                     Login
                   </Link>
+            
+          }
+           
                   
                  </div>
         </div>
