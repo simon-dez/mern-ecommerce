@@ -18,6 +18,8 @@ import chatbotRoutes from "./routes/chatbotRoute.js";
 import bodyParser from "body-parser";
 import cartRoute from "./routes/cartRoute.js";
 import userRoutes from "./routes/userRoutes.js";
+import accountRoutes from "./routes/accountRoutes.js";
+import addressRoutes from "./routes/addressRoutes.js";
 
 //Config
 dotenv.config();
@@ -34,12 +36,16 @@ app.use(bodyParser.json());
 
 // Routes
 app.use("/api/products", productRoutes);
+//app.use("/api/balaz", orderRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", stripePaymentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api", chatbotRoutes);
 app.use("/api", cartRoute);
 app.use("/api/users", userRoutes)
+app.use("/api", accountRoutes);
+app.use("/api", addressRoutes);
+
 app.use(errorHandler);
 
 // Database connection

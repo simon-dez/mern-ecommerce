@@ -17,7 +17,13 @@ function AuthLogin() {
     e.preventDefault();
     try {
       await login(email, pass);
-      navigate("/");
+      if (isAuthenticated && user.isVerified){
+        navigate("/")
+      }
+      if (isAuthenticated && user.isVerified && user.role === "admin"){
+        navigate("/admin")
+      }
+      navigate("/home");
       toast.success("Login successfully");
     } catch (error) {
       console.log(error);

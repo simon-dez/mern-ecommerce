@@ -93,17 +93,15 @@ function Checkout() {
     }
   };
   
-  
-
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
+      <h1 className="text-2xl font-semibold mb-4 text-center">Checkout</h1>
       {cart.length === 0 ? (
-        <div>Your cart is empty.</div>
+        <div className="text-center">Your cart is empty.</div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Customer Information */}
-          <div>
+          <div className="space-y-4">
             <h2 className="text-xl font-semibold mb-4">Customer Information</h2>
             <div className="space-y-4">
               <input
@@ -129,7 +127,7 @@ function Checkout() {
           </div>
 
           {/* Shipping Information */}
-          <div>
+          <div className="space-y-4">
             <h2 className="text-xl font-semibold mb-4">Shipping Information</h2>
             <div className="space-y-4">
               <input
@@ -185,7 +183,7 @@ function Checkout() {
           </div>
 
           {/* Order Summary */}
-          <div className="col-span-2">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <button
               onClick={() => setShowSummary(!showSummary)}

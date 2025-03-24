@@ -131,7 +131,7 @@ function Cart() {
                     <img
                       src={product.image}
                       alt={product.product}
-                      className="w-full h-32 object-cover rounded"
+                      className="w-full h-70 object-cover rounded"
                     />
                     <h3 className="text-md font-semibold mt-2">
                       {product.product}

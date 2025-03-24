@@ -7,6 +7,9 @@ import womenItemsImg from "../../assets/Background/women items.jpg";
 import menItemsImg from "../../assets/Background/men items.jpg";
 import accessoiresImg from "../../assets/Background/DIOR.avif";
 import {useNavigate} from "react-router-dom";
+
+
+
 const Background = () => {
   const navigate = useNavigate();
   return (
@@ -33,6 +36,7 @@ const Background = () => {
               src={womenItemsImg}
               alt="Women's Collection"
               className="item-image women-image  hover:cursor-pointer transform hover:scale-110 transition duration-300 ease-in-out  text-white px-4 py-2 rounded"
+            
             />
             </button>
             <button onClick={() => navigate('/category/jewelery')} className="item-button">

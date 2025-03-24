@@ -112,6 +112,7 @@ export const login = async (req, res) => {
         email: user.email,
         role: user.role,
         lastLogin: user.lastLogin,
+       
       },
     });
   } catch (error) {

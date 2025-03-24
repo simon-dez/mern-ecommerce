@@ -1,17 +1,23 @@
+
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { FaBars, FaXmark, FaUser, FaCartShopping } from "react-icons/fa6";
 import Logo from "../../assets/company-logo2.png";
 import { useAuthStore } from "../../store/authStore.js";
+import toast from "react-hot-toast";
 
 function Navbar() {
   const { cart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
-  //const user = JSON.parse(localStorage.getItem('user') || 'null');
   const dropdownRef = useRef(null);
-  const { isAuthenticated, user } = useAuthStore();
+  const { logout, user } = useAuthStore();
+
+  const handleLogout = () => {
+    logout();
+    toast.success("You have been logged out");
+  };
 
   const menuItems = [
     {
@@ -306,7 +312,7 @@ function Navbar() {
 
           {/* Centered Logo */}
           <div className="flex-1 flex justify-center">
-            <Link to="/" className="text-3xl font-bold text-gray-900">
+            <Link to="/home" className="text-3xl font-bold text-gray-900">
               {/* Show image on large screens */}
               <img
                 src={Logo}
@@ -314,7 +320,7 @@ function Navbar() {
                 className="w-auto h-50 hidden lg:block"
               />
               {/* Show text on small and medium screens */}
-              <span className="block lg:hidden">DEDSV</span>
+              <span className="block lg:hidden text-2xl">DEDSV</span>
             </Link>
           </div>
 
@@ -337,10 +343,12 @@ function Navbar() {
                 {cart.length}
               </span>
             </Link>
-            {isAuthenticated ? (
+
+            {user ? (
               <Link
-                to="/logout"
+                to="/"
                 className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 "
+                onClick={handleLogout}
               >
                 Logout
               </Link>

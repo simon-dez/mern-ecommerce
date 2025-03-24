@@ -1,33 +1,59 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-
+import axios from 'axios';
 
 function Orders() {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
-    if (!storedUser) {
-      navigate('/login');
-    } else {
-      setUser(storedUser);
-      // Dummy previous orders for demonstration:
-      setOrders([
-        { id: '12345', date: '2023-07-28', total: 49.99 },
-        { id: '67890', date: '2023-08-05', total: 79.00 }
-      ]);
-    }
-  }, [navigate]);
+    //console.log("Fetching user from local storage...");
+   // const storedUser = localStorage.getItem('token'); //const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+   // if (!storedUser) {
+     // navigate('/account/orders'); // Redirect to login if user is not found
+      //return;
+    //}
+    //console.log("User found:", user); // Debugging log
+    //setUser(user);
 
-  if (!user) return null;
+    const fetchOrders = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+         // console.log("No token found, redirecting to login...");
+          navigate('/login');
+          return;
+        }
+    
+        console.log("Fetching orders...");
+        const response = await axios.get('http://localhost:3000/api/account/orders', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+    
+        console.log("Orders received:", response.data); // Debugging log
+        setOrders(response.data); // Update state
+      } catch (error) {
+        console.error('Error fetching orders:', error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    
+
+    fetchOrders();
+  },[]);
+
+  //if (loading) return <p>Loading...</p>;
+  //if (!user) return null;
 
   const menuItems = [
     { path: '/account', label: 'Account Overview' },
     { path: '/account/orders', label: 'My Orders' },
-    { path: '/account/addresses', label: 'My Addresses' }
+
   ];
 
   return (
@@ -60,10 +86,15 @@ function Orders() {
           ) : (
             <ul className="space-y-2">
               {orders.map(order => (
-                <div key={order.id} className="bg-white p-6 rounded-lg shadow-sm">
-                  <p>Order ID: {order.id}</p>
-                  <p>Date: {order.date}</p>
-                  <p>Total: €{order.total.toFixed(2)}</p>
+                <div key={order._id} className="bg-white p-6 rounded-lg shadow-sm">
+                  <p>Hello,{order.customerName}</p>
+                  <br />
+                  <p>Order ID: {order._id}</p>
+                  
+                  <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
+                   <p>Total: €{order.totalAmount.toFixed(2)}</p> 
+                  <p>Shipping address: {order.shippingAddress.address},{order.shippingAddress.city},{order.shippingAddress.state},{order.shippingAddress.postalCode},{order.shippingAddress.country}</p>
+                  <p>Status: {order.isPaid ? 'Paid' : 'Pending Payment'}</p>
                 </div>
               ))}
             </ul>

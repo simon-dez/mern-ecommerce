@@ -8,10 +8,11 @@ function Footer  ()  {
     <footer className=" text-gray-900 py-4">
       <div className="container mx-auto text-center">
        <div className="mb-8">
-          <a href="/" className="mx-4 hover:text-gray-600">Home</a>
+          <a href="/home" className="mx-4 hover:text-gray-600">Home</a>
           <a href="/about" className="mx-4 hover:text-gray-600">About</a>
           <a href="/contact" className="mx-4 hover:text-gray-600">Contact</a>
           <a href="/privacy" className="mx-4 hover:text-gray-600">Privacy Policy</a>
+          <a href="/ourstores" className="mx-4 hover:text-gray-600">Our Stores</a>
 
         </div>
         <div className="mb-4 flex justify-center">
@@ -38,12 +39,6 @@ function Footer  ()  {
   );
 };
 
-//const [currentForm, setCurrentForm] = useState("login");
 
-  //const toggleForm = (formName) => {
- //   setCurrentForm(formName);
-  //}
-
-  //{currentForm === "login" ? <AuthLogin onFormSwitch={toggleForm} /> : <AuthRegister onFormSwitch={toggleForm}/>}
 export default Footer;
 
