@@ -11,7 +11,7 @@ const AdminOrders = () => {
         const fetchOrders = async () => {
             console.log("Fetching orders...");
             try {
-                const response = await axios.get('http://localhost:3000/api/account/orders', {
+                const response = await axios.get('http://localhost:3000/api', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },

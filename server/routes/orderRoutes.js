@@ -8,13 +8,7 @@ const router = express.Router();
 
 
 router.get('/', getOrders);
-router.get('/balaz', async (req, res) => {
-    try {
-        res.send("Balazs");
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
+
 
 
 router.post('/orders', createOrder);

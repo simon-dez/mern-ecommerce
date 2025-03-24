@@ -36,7 +36,6 @@ app.use(bodyParser.json());
 
 // Routes
 app.use("/api/products", productRoutes);
-//app.use("/api/balaz", orderRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", stripePaymentRoutes);
 app.use("/api/auth", authRoutes);
