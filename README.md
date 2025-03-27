@@ -12,7 +12,7 @@ Technologies
 
     Database: MongoDB
 
-    Styling: CSS (with optional libraries like Bootstrap or Material-UI)
+    Styling: Tailwind CSS 
 
 Features
 
